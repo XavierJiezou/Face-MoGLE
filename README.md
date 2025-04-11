@@ -229,7 +229,7 @@ python gradio_app.py
 
 <br>
 
-## Citation
+<!-- ## Citation
 
 
 ```bibtex
@@ -239,7 +239,7 @@ python gradio_app.py
   journal   = {arXiv preprint arXiv:xxxx.xxxxx},
   year      = {2025}
 }
-```
+``` -->
 
 ---
 
