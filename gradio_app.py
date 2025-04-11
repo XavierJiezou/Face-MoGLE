@@ -10,7 +10,6 @@ from src.flux.condition import Condition
 from src.moe.mogle import MoGLE
 
 
-# 模型和配置初始化封装类
 class ImageGenerator:
     def __init__(self):
         self.args = self.get_args()
@@ -73,15 +72,12 @@ class ImageGenerator:
         return result.images[0]
 
 
-# 实例化生成器
 generator = ImageGenerator()
 
-# 推理函数
 def inference(prompt, mask, seed):
     return generator.generate(prompt, mask, seed)
 
 
-# Gradio UI 界面
 demo = gr.Interface(
     fn=inference,
     inputs=[
@@ -94,7 +90,6 @@ demo = gr.Interface(
     # description="Controlnet Face Generation.",
 )
 
-# 启动服务
 if __name__ == "__main__":
     demo.launch(
         server_name="0.0.0.0",
