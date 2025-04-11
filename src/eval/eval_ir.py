@@ -49,15 +49,15 @@ def main():
     save_path = f"{output_dir}/eval_{name}.json"
 
     import json
-    # 读取现有JSON文件（如果存在）
+
     data = {}
     if os.path.exists(save_path):
         with open(save_path, 'r') as f:
             data = json.load(f)
 
-    # 更新数据，添加lpips值
+
     data['ir'] = reward_total / len(prompts)
-    # 写回JSON文件
+
     with open(save_path, 'w') as f:
         json.dump(data, f, indent=4)
 
