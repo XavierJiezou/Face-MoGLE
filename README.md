@@ -117,7 +117,7 @@ Measure generation quality and text-image alignment.
 
 ```bash
 python src/eval/eval_fid_kid_text.py \
-    --fake_image visulization/face-mogle/512/face \
+    --fake_image visulization/face-mogle/face \
     --real_face_dir visulization/mmcelebahq/face \
     --real_text_dir visulization/mmcelebahq/text \
     --output_dir eval_result
