@@ -145,7 +145,7 @@ Assess structural alignment between masks and generated images.
 ```bash
 python src/eval/eval_mask.py \
     --real_dir visulization/mmcelebahq/face \
-    --fake_img visulization/face-mogle/512/face \
+    --fake_img visulization/face-mogle/face \
     --output_dir eval_result
 ```
 
@@ -158,7 +158,7 @@ Evaluate human preference alignment and text relevance.
 
 ```bash
 python src/eval/eval_ir.py \
-    --image_path visulization/face-mogle/512/face \
+    --image_path visulization/face-mogle/face \
     --text_path visulization/mmcelebahq/text \
     --output_dir eval_result
 ```
