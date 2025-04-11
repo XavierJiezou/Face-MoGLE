@@ -326,12 +326,9 @@ def compute_mask(fdir1, fdir2, batch_size=50):
         masks1 = torch.tensor(masks1)
         masks2 = torch.tensor(masks2)
         
-        # 计算像素级准确率（OA）
         batch_accuracies = (masks1 == masks2).float().mean(dim=(1, 2)).numpy()
         mask_accuracies.extend(batch_accuracies)
         
-        # 计算 mIoU
-        # 自动检测类别数（假设类别编号从 0 开始）
         num_classes = int(torch.max(torch.cat((masks1, masks2))) + 1)
         ious = []
         for c in range(num_classes):
@@ -339,18 +336,17 @@ def compute_mask(fdir1, fdir2, batch_size=50):
             gt_c = (masks1 == c)
             intersection = (pred_c & gt_c).float().sum(dim=(1, 2))
             union = (pred_c | gt_c).float().sum(dim=(1, 2))
-            # 若该类别的 union 为 0，则认为 IoU 为 1
+
             iou_c = torch.where(union == 0, torch.ones_like(intersection), intersection / union)
             ious.append(iou_c)
-        # 将所有类别的 IoU 堆叠，并计算每个样本的平均 IoU
+
         ious = torch.stack(ious, dim=1)  # shape: (batch_size, num_classes)
-        batch_miou = ious.mean(dim=1).numpy()  # 每个样本的 mIoU
+        batch_miou = ious.mean(dim=1).numpy()  
         mask_ious.extend(batch_miou)
     
     avg_mask_accuracy = np.mean(mask_accuracies)
     avg_mask_iou = np.mean(mask_ious)
     
-    # 返回百分比形式的 OA 和 mIoU
     return float(avg_mask_accuracy * 100), float(avg_mask_iou * 100)
 
 
@@ -390,25 +386,25 @@ class MultiModalFaceGenerationEvaluator:
         }
         output_dir = parser.parse_args().output_dir
         os.makedirs(output_dir, exist_ok=True)
-        # 保存路径
+
         name = parser.parse_args().fake_image.split(os.path.sep)[-3]
         save_path = f"{output_dir}/eval_{name}.json"
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         import json
-        # 写入 json 文件（格式化缩进）
+
         with open(save_path, "w") as f:
             json.dump(evaluation_metrics, f, indent=4)
         
         print(f"Evaluation metrics saved to {save_path}")
-        # 使用 rich 打印表格
+
         console = Console()
         table = Table(title="Evaluation Metrics")
 
-        # 添加列标题
+
         for key in evaluation_metrics["Evaluation Metrics"].keys():
             table.add_column(key, justify="center", style="cyan", no_wrap=True)
 
-        # 添加一行数据
+
         table.add_row(*evaluation_metrics["Evaluation Metrics"].values())
 
         # os.system('clear')
