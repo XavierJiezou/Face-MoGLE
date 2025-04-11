@@ -1,0 +1,102 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.idea/
+.vscode/
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+.cache
+pytest_cache/
+nosetests.xml
+test-results/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb~
+
+# PyCharm / VS Code project files
+*.iml
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+*.swp
+
+# mypy / lint / static analysis
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+pylint-report.txt
+bandit.json
+
+# Logs and debugging
+*.log
+*.out
+*.err
+
+# Data / models / checkpoints
+data/
+logs/
+outputs/
+runs/
+output/
+*.ckpt
+*.pth
+*.pt
+*.onnx
+*.npz
+*.npz*
+*.h5
+checkpoints
+
+# Gradio or Streamlit cache
+gradio_cached_examples/
+.streamlit/
+
+# Local config files
+*.env
+.env.*
+config.yaml
+*.local
+
+# System / macOS / Windows files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.~*
+
+visulization
