@@ -183,9 +183,6 @@ Launch the interactive demo app:
 python gradio_app.py
 ```
 
-
-<br>
-
 ## Visual Results
 
 ### 🔹 Monomodal Generation
