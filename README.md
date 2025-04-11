@@ -14,7 +14,7 @@ Mixture of Global and Local Experts with Diffusion Transformer for Controllable 
 
 ---
 
-## Features
+<!-- ## Features
 
 **Face-MoGLE** is a novel and flexible framework for high-quality, controllable face generation, built on top of Diffusion Transformer (DiT) models.
 
@@ -34,7 +34,7 @@ Mixture of Global and Local Experts with Diffusion Transformer for Controllable 
 
 - **2025-04-11**: 🧪 Inference and demo scripts released! Try Face-MoGLE with your own semantic masks and test its control capability across different face attributes. 
 
-<img src='assets/framework.svg' width='100%' />
+<img src='assets/framework.svg' width='100%' /> -->
 
 ## Installation
 
