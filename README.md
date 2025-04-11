@@ -137,8 +137,8 @@ python main.py gt_dir pred_dir
 
 ---
 
-### 🎭 Mask Structure Consistency (DINO)  
-Assess structural alignment between masks and generated images.
+### 🎭 Mask Consistency (DINO Structure Distance)  
+Assess structural alignment between realistic facial images and generated images.
 
 - 🧩 **[Mask Consistency](https://github.com/open-mmlab/mmeval)** – Measures spatial alignment via DINO features
 
@@ -151,7 +151,7 @@ python src/eval/eval_mask.py \
 
 ---
 
-### 👤 Aesthetic & Identity Alignment (ImageReward)  
+### 👤 Human Perference (ImageReward)  
 Evaluate human preference alignment and text relevance.
 
 - 🌟 **[ImageReward (IR)](https://github.com/THUDM/ImageReward)** – Scores photorealism and semantic alignment
@@ -195,8 +195,8 @@ python gradio_app.py
 
 <table>
   <tr>
-    <td align="center"><b>Mask-to-Face</b></td>
-    <td align="center"><b>Text-to-Face</b></td>
+    <td align="center"><b>Mask-to-Face Generation</b></td>
+    <td align="center"><b>Text-to-Face Generation</b></td>
   </tr>
   <tr>
     <td><img src="assets/mask2face.svg" width="100%"></td>
@@ -220,14 +220,14 @@ python gradio_app.py
 
 ---
 
-### 🧪 Zero-Shot Generalization (MM-FFHQ-Female Dataset)
+### 🧪 Zero-Shot Generalization (MM-FFHQ-Female)
 
 <p align="center">
   <img src="assets/zero_ffhq.svg" width="100%"/>
 </p>
 
 
-<br>
+<!-- <br> -->
 
 <!-- ## Citation
 
