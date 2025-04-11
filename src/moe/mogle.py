@@ -28,21 +28,20 @@ class DynamicGatingNetwork(nn.Module):
     def __init__(self, hidden_dim=64, embed_dim=64, dtype=torch.bfloat16):
         super().__init__()
 
-        # 处理时间步
         self.time_proj = Timesteps(
             hidden_dim, flip_sin_to_cos=True, downscale_freq_shift=0
         )
         self.timestep_embedding = TimestepEmbedding(hidden_dim, embed_dim)
         self.timestep_embedding = self.timestep_embedding.to(dtype=torch.bfloat16)
-        # 处理 noise_latent
+
         self.noise_proj = nn.Linear(hidden_dim, hidden_dim)
         self.dtype = dtype
 
-        # 权重计算
+
         self.gate = nn.Sequential(
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(),
-            nn.Linear(hidden_dim, 20),  # 生成两个权重
+            nn.Linear(hidden_dim, 20), 
         )
 
     def forward(self, condition_latents, noise_latent, timestep):
@@ -53,7 +52,7 @@ class DynamicGatingNetwork(nn.Module):
         """
         bs, seq_len, hidden_dim = condition_latents.shape
 
-        # 处理 timestep
+
         time_emb = self.time_proj(timestep)  # (bs, hidden_dim)
         time_emb = time_emb.to(self.dtype)
         time_emb = self.timestep_embedding(time_emb)  # (bs, embed_dim)
@@ -62,14 +61,14 @@ class DynamicGatingNetwork(nn.Module):
             -1, seq_len, -1
         )  # (bs, 1024, embed_dim)
 
-        # 处理 noise_latent
+
         noise_emb = self.noise_proj(noise_latent)  # (bs, 1024, 64)
-        # 拼接所有输入
+
         # fused_input = torch.cat([condition_latents, noise_emb, time_emb], dim=2)  # (bs, 1024, 64+64+128)
         fused_input = condition_latents + noise_emb + time_emb
-        # 计算权重
+
         weight = self.gate(fused_input)  # (bs, 1024, 2)
-        weight = F.softmax(weight, dim=2)  # 归一化
+        weight = F.softmax(weight, dim=2)  
 
         return weight
 
