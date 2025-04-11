@@ -112,8 +112,8 @@ Face-MoGLE is evaluated across multiple dimensions, including visual fidelity, s
 ### 🎯 FID / KID / Text Consistency  
 Measure generation quality and text-image alignment.
 
-- 📌 **[FID & KID](https://github.com/GaParmar/clean-fid)** – Visual fidelity metrics  
-- ✍️ **[Text Consistency](https://github.com/Taited/clip-score)** – Measures alignment between text prompts and generated images
+- 📌 **[FID & KID](https://github.com/GaParmar/clean-fid)**
+- ✍️ **[Text Consistency](https://github.com/Taited/clip-score)**
 
 ```bash
 python src/eval/eval_fid_kid_text.py \
@@ -125,10 +125,9 @@ python src/eval/eval_fid_kid_text.py \
 
 ---
 
-### 🧠 CLIP-based Multimodal Alignment (CMMD)  
-Evaluate cross-modal semantic consistency using CLIP.
+### 🧠 CLIP Maximum Mean Discrepancy (CMMD)  
 
-- 🤖 **[CMMD](https://github.com/sayakpaul/cmmd-pytorch)** – CLIP-based evaluation of text-to-image alignment
+- 🤖 **[CMMD](https://github.com/sayakpaul/cmmd-pytorch)**
 
 ```bash
 cd cmmd-pytorch
@@ -138,9 +137,8 @@ python main.py gt_dir pred_dir
 ---
 
 ### 🎭 Mask Consistency (DINO Structure Distance)  
-Assess structural alignment between realistic facial images and generated images.
 
-- 🧩 **[Mask Consistency](https://github.com/open-mmlab/mmeval)** – Measures spatial alignment via DINO features
+- 🧩 **[Mask Consistency](https://github.com/omerbt/Splice)**
 
 ```bash
 python src/eval/eval_mask.py \
@@ -152,9 +150,8 @@ python src/eval/eval_mask.py \
 ---
 
 ### 👤 Human Perference (ImageReward)  
-Evaluate human preference alignment and text relevance.
 
-- 🌟 **[ImageReward (IR)](https://github.com/THUDM/ImageReward)** – Scores photorealism and semantic alignment
+- 🌟 **[ImageReward (IR)](https://github.com/THUDM/ImageReward)**
 
 ```bash
 python src/eval/eval_ir.py \
