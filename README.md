@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.png" width="50%"/>
+<img src="assets/logo.png" width="200"/>
 
 # Face-MoGLE
 
@@ -21,9 +21,6 @@ Mixture of Global and Local Experts with Diffusion Transformer for Controllable 
 <!--This repository serves as the official implementation of the paper **"Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation"**. It provides a comprehensive pipeline for semantic segmentation, including data preprocessing, model training, evaluation, and deployment, specifically tailored for cloud segmentation tasks in remote sensing imagery.-->
 
 ---
-
-
-
 
 ## Features
 
