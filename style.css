@@ -1,0 +1,326 @@
+/* CSS Document */
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+
+body {
+    font-family: Google Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight:300;
+    font-size:18px;
+    margin:0px;
+    padding:0px;
+}
+
+p {
+    font-size: 14pt;
+}
+
+
+a:link,a:visited
+{
+    color: #1367a7;
+    text-decoration: none;
+}
+a:hover {
+    color: #208799;
+}
+
+td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+/* your paper and bibtex*/
+/* modified from: http://css-tricks.com/snippets/css/layered-paper/ by: https://github.com/richzhang/webpage-template */
+
+.layered-paper-big { 
+    box-shadow:
+    0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+    5px 5px 0 0px #eee, /* The second layer */
+    5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+    10px 10px 0 0px #eee, /* The third layer */
+    10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+    15px 15px 0 0px #eee, /* The fourth layer */
+    15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+    20px 20px 0 0px #eee, /* The fifth layer */
+    20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+    25px 25px 0 0px #eee, /* The fifth layer */
+    25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+    margin-bottom: 30px;
+}
+
+.layered-paper { 
+  box-shadow:
+  0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+  5px 5px 0 0px #eee, /* The second layer */
+  5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+  10px 10px 0 0px #eee, /* The third layer */
+  10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 30px;
+  margin-bottom: 5px;
+}
+
+.paper-big { 
+  box-shadow:
+  0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+  margin-left: 10px;
+  margin-right: 45px;
+}
+
+pre {
+    position: relative;
+    display: block;
+    padding: 20px;
+    background: #f2f2f2;
+    color: #555755;
+    padding: 1rem 1rem 1rem 5rem;
+    border-radius: 20px !important;
+    min-width: 100px;
+  }
+
+span.command-copy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: .6;
+    font-size: 20px;
+    color: #555755;
+  }
+  
+span.command-copy:hover {
+    cursor: pointer;
+  }
+
+
+/* buttons */
+
+.my-btn {
+    position: absolute !important;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.my-btn-info {
+    color: #000;
+    background-color: #62dbff !important;
+    border-color: #62dbff !important;
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+  }
+ 
+
+ .smallpad.table{
+    width: unset !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+td {
+    border: none !important;
+}
+
+.smallpad.table>:not(caption)>*>* {
+    padding: 1 !important;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 0px !important;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+.btn-light:hover { 
+  background: #eee !important;
+  border-color: #ccc !important;
+}
+
+
+/* carousel */
+.carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    margin: 0 3px;
+    border-radius: 100%;
+    background-color: #62daff7c;
+  }  
+
+.carousel-indicators .active {
+    background-color: #62dbff;
+  }
+
+.left-arrow, .right-arrow {
+    color: #62dbff !important;
+}
+
+.audio-carousel-indicators{
+    bottom: -30px !important;
+}
+
+.audio-carousel-caption{
+    top: 100% !important;
+}
+
+/* slider */
+.custom-range::-webkit-slider-thumb {
+    background-color: #62dbff !important;
+  }
+
+.custom-range2 {
+    accent-color: #62dbff !important;
+  }
+
+  .range-slider {
+    position: relative;
+  }
+  
+  .range-ticks {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: column;
+    writing-mode: vertical-lr;
+  }
+  
+  /* overlay */
+  .overlay-container {
+    position: relative;
+  }
+  
+  .overlay-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s ease;
+  }
+  
+  .overlay-image-2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s ease;
+  }
+
+  .overlay-container:hover .overlay-image {
+    opacity: 1;
+  }
+
+  .overlay-container:hover .overlay-image-2 {
+    opacity: 1;
+  }
+  
+  .overlay-video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s ease;
+  }
+
+  .overlay-container:hover .overlay-video {
+    opacity: 1;
+  }
+
+/* before and after slider */
+/* css was taken from https://www.codehim.com/vanilla-javascript/before-after-image-slider-in-vanilla-javascript/ */
+.container-ba-slider{
+  width: 300px;
+  height: 300px;
+  position: relative;
+
+  overflow:hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.before,
+.after {
+  background-repeat:no-repeat;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top:0;
+  left:0;
+  pointer-events:none;
+  overflow: hidden;
+}
+
+.after{
+  width:125px;
+}
+
+.scroller{
+  width: 50px;
+  height:50px;
+  position: absolute;
+  left:100px;
+  top:50%;
+  transform:translateY(-50%);
+  border-radius:50%;
+  background-color: transparent;
+  opacity:0.9;
+  pointer-events:auto;
+  cursor: pointer;
+}
+
+.scroller:hover{
+  opacity:1;
+}
+
+.scrolling{
+  pointer-events:none;
+  opacity:1;
+}
+
+.scroller-thumb{
+  width:100%;
+  height:100%;
+  padding:5px;
+}
+
+.scroller:before,
+.scroller:after{
+  content:" ";
+  display: block;
+  width: 7px;
+  height: 9999px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3.5px;
+  z-index: 30;
+  transition:0.1s;
+}
+.scroller:before{
+  top:100%;
+}
+.scroller:after{
+  bottom:100%;
+}
+
+.scroller{
+  border: 5px solid #fff;
+}
+.scroller:before,
+.scroller:after{
+  background: #fff;
+}
