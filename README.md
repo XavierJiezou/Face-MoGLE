@@ -191,32 +191,13 @@ Face-MoGLE
 
 <br>
 
-## 🚀 Training & Testing
-
-Train Face-MoGLE with default configuration:
+## 🚀 Training
 
 ```bash
 bash script/train_face-mogle.sh
 ```
 
-Run test script:
-
-```bash
-python test.py \
-  --root data/mmcelebahq \
-  --lora_ckpt runs/face-mogle/pytorch_lora_weights.safetensors \
-  --moe_ckpt runs/face-mogle/mogle.pt \
-  --pretrained_ckpt checkpoints/FLUX.1-dev \
-  --config_path runs/face-mogle/config.yaml \
-  --output_dir visualization/face-mogle
-```
-
-## 🧪 Testing with Pretrained Weights
-
-
-### ▶️ Run the Test
-
-Execute the following command:
+## 🧪 Testing
 
 ```bash
 python test.py \
