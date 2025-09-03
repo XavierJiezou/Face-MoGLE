@@ -168,10 +168,8 @@ Face-MoGLE is evaluated across multiple dimensions, including generation fidelit
 
 ### FID / KID / Text Consistency
 
-Measure generation quality and text-image alignment.
-
-> - [FID & KID]: https://github.com/GaParmar/clean-fid
-> - [Text Consistency]: https://github.com/Taited/clip-score
+> [FID & KID]: https://github.com/GaParmar/clean-fid
+> [Text Consistency]: https://github.com/Taited/clip-score
 
 ```bash
 python src/eval/eval_fid_kid_text.py \
