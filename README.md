@@ -49,6 +49,85 @@ conda activate face-mogle
 pip install -r requirements.txt
 ```
 
+### 📥 Download Checkpoints
+
+Before running the test, please download the following files:
+
+- **Pretrain**  
+  - [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
+
+- **SFT**  
+  - [pytorch_lora_weights.safetensors](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/pytorch_lora_weights.safetensors)  
+  - [global_local_mask_moe.pt](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/global_local_mask_moe.pt)  
+
+### 📂 Directory Setup
+
+After downloading, please place the files in the following structure:
+
+```bash
+Face-MoGLE
+├── ...
+├── checkpoints
+│   ├── FLUX.1-dev
+├── runs
+│   ├── face-mogle
+│   │   ├── pytorch_lora_weights.safetensors
+│   │   ├── global_local_mask_moe.pt
+│   │   ├── config.yaml
+````
+
+## 🖼️ Inference
+
+Generate images with semantic mask + text:
+
+```bash
+python inference.py \
+    --prompt "She is wearing lipstick. She is attractive and has straight hair." \
+    --mask "data/mmcelebahq/mask/27000.png" \
+    --output_dir output
+```
+
+
+## 🌐 Gradio Demo (Web UI)
+
+You can also launch an interactive demo using **Gradio**:
+
+```bash
+python gradio_app.py
+````
+
+🎥 Demo
+
+<video src="https://github.com/user-attachments/assets/fa2ba2e0-03d5-4d61-887c-53cdce0ccdf7" controls width="100%" playsinline preload="metadata"></video>
+
+### 📂 Directory Setup
+
+Make sure the pretrained backbone and model weights are placed in the following structure before running the demo:
+
+```bash
+Face-MoGLE
+├── ...
+├── checkpoints
+│   ├── FLUX.1-dev
+├── runs
+│   ├── face-mogle
+│   │   ├── pytorch_lora_weights.safetensors
+│   │   ├── global_local_mask_moe.pt
+│   │   ├── config.yaml
+```
+
+### ⚡ GPU Control (Optional)
+
+If you want to specify which GPU to use, set the `CUDA_VISIBLE_DEVICES` environment variable before launching the demo.
+For example, to use **GPU 1**:
+
+```bash
+export CUDA_VISIBLE_DEVICES=1
+python gradio_app.py
+```
+
+
+
 ## Prepare Data
 
 
@@ -108,6 +187,8 @@ Face-MoGLE
 ```
 
 
+
+
 <br>
 
 ## 🚀 Training & Testing
@@ -132,32 +213,6 @@ python test.py \
 
 ## 🧪 Testing with Pretrained Weights
 
-### 📥 Download Checkpoints
-
-Before running the test, please download the following files:
-
-- **Pretrain**  
-  - [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
-
-- **SFT**  
-  - [pytorch_lora_weights.safetensors](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/pytorch_lora_weights.safetensors)  
-  - [global_local_mask_moe.pt](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/global_local_mask_moe.pt)  
-
-### 📂 Directory Setup
-
-After downloading, please place the files in the following structure:
-
-```bash
-Face-MoGLE
-├── ...
-├── checkpoints
-│   ├── FLUX.1-dev
-├── runs
-│   ├── face-mogle
-│   │   ├── pytorch_lora_weights.safetensors
-│   │   ├── global_local_mask_moe.pt
-│   │   ├── config.yaml
-````
 
 ### ▶️ Run the Test
 
@@ -222,54 +277,6 @@ python src/eval/eval_ir.py \
     --output_dir eval_result
 ```
 
-## 🖼️ Inference
-
-Generate images with semantic mask + text:
-
-```bash
-python inference.py \
-    --prompt "She is wearing lipstick. She is attractive and has straight hair." \
-    --mask "data/mmcelebahq/mask/27000.png" \
-    --output_dir output
-```
-
-## 🌐 Gradio Demo (Web UI)
-
-You can also launch an interactive demo using **Gradio**:
-
-```bash
-python gradio_app.py
-````
-
-🎥 Demo
-
-<video src="https://github.com/user-attachments/assets/fa2ba2e0-03d5-4d61-887c-53cdce0ccdf7" controls width="100%" playsinline preload="metadata"></video>
-
-### 📂 Directory Setup
-
-Make sure the pretrained backbone and model weights are placed in the following structure before running the demo:
-
-```bash
-Face-MoGLE
-├── ...
-├── checkpoints
-│   ├── FLUX.1-dev
-├── runs
-│   ├── face-mogle
-│   │   ├── pytorch_lora_weights.safetensors
-│   │   ├── global_local_mask_moe.pt
-│   │   ├── config.yaml
-```
-
-### ⚡ GPU Control (Optional)
-
-If you want to specify which GPU to use, set the `CUDA_VISIBLE_DEVICES` environment variable before launching the demo.
-For example, to use **GPU 1**:
-
-```bash
-export CUDA_VISIBLE_DEVICES=1
-python gradio_app.py
-```
 
 ## Visual Results
 
