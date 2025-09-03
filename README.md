@@ -56,9 +56,11 @@ pip install -r requirements.txt
 
 You can download the datasets from Hugging Face:
 
-- [MM-CelebA-HQ](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmcelebahq.zip) (The dataset is also available from the [TediGAN](https://github.com/IIGROUP/MM-CelebA-HQ-Dataset).)
-- [MM-FairFace-HQ](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmfairfacehq.zip)  
-- [MM-FFHQ-Female](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmffhqfemale.zip)  
+| Dataset            | Download Link                                                                                                                | Usage                               |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
+| **MM-CelebA-HQ**   | [Hugging Face](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmcelebahq.zip) <br> (Also available in [TediGAN](https://github.com/IIGROUP/MM-CelebA-HQ-Dataset)) | Training & Evaluation                |
+| **MM-FairFace-HQ** | [Hugging Face](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmfairfacehq.zip)                    | Zero-shot Generalization Validation |
+| **MM-FFHQ-Female** | [Hugging Face](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmffhqfemale.zip)                    | Zero-shot Generalization Validation |
 
 ---
 
