@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 ### 📥 Download Checkpoints
 
-Before running the test, please download the following files:
+Before running the inference or test, please download the following files:
 
 - **Pretrain**  
   - [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
