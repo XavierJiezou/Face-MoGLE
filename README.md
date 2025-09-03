@@ -89,7 +89,7 @@ CUDA_VISIBLE_DEVICES=0 python gradio_app.py
 ## 📦 Prepare Data
 
 
-### 📥 Download Datasets
+### Download Datasets
 
 You can download the datasets from Hugging Face:
 
@@ -102,7 +102,7 @@ You can download the datasets from Hugging Face:
 **Note:**  
 > The **MM-FairFace-HQ** and **MM-FFHQ-Female** datasets are multimodal extensions we constructed based on the original face image datasets, using a semi-automated annotation approach.
 
-### 📂 Dataset Structure
+### Dataset Structure
 
 After extraction, please organize the directory as follows:
 
@@ -164,13 +164,14 @@ python test.py \
 
 ## 📊 Evaluation
 
-Face-MoGLE is evaluated across multiple dimensions, including visual fidelity, semantic alignment, and structural consistency.
+Face-MoGLE is evaluated across multiple dimensions, including generation fidelity and condition consistency.
 
-### FID / KID / Text Consistency  
+### FID / KID / Text Consistency
+
 Measure generation quality and text-image alignment.
 
-- *[FID & KID](https://github.com/GaParmar/clean-fid)**
-- **[Text Consistency](https://github.com/Taited/clip-score)**
+> - [FID & KID]: https://github.com/GaParmar/clean-fid
+> - [Text Consistency]: https://github.com/Taited/clip-score
 
 ```bash
 python src/eval/eval_fid_kid_text.py \
@@ -186,12 +187,12 @@ python src/eval/eval_fid_kid_text.py \
 
 ```bash
 cd cmmd-pytorch
-python main.py gt_dir pred_dir
+python main.py <gt_dir> <pred_dir>
 ```
 
 ### Mask Consistency (DINO Structure Distance)  
 
-- **[Mask Consistency](https://github.com/omerbt/Splice)**
+> Mask Consistency: https://github.com/omerbt/Splice
 
 ```bash
 python src/eval/eval_mask.py \
@@ -202,7 +203,7 @@ python src/eval/eval_mask.py \
 
 ### Human Perference (ImageReward)  
 
-- **[ImageReward (IR)](https://github.com/THUDM/ImageReward)**
+> ImageReward (IR): https://github.com/THUDM/ImageReward
 
 ```bash
 python src/eval/eval_ir.py \
