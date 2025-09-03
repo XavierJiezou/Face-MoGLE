@@ -66,7 +66,7 @@ python inference.py --prompt "She is wearing lipstick. She is attractive and has
 python inference.py --mask "data/mmcelebahq/mask/27000.png" \
 ```
 
--- (Text+Mask)2Face
+- (Text+Mask)2Face
 
 ```bash
 python inference.py \
