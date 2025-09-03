@@ -115,9 +115,6 @@ Train Face-MoGLE with default configuration:
 bash script/train_face-mogle.sh
 ```
 
----
-
-## 🧪 Testing
 
 Run test script:
 
