@@ -49,7 +49,7 @@ conda activate face-mogle
 pip install -r requirements.txt
 ```
 
-## Prepare Dataset
+## Prepare Data
 
 
 ### 📥 Download Datasets
