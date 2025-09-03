@@ -54,16 +54,29 @@ Face-MoGLE
 
 ## 🖼️ Inference
 
-- Text+:
+- Text2Face
+
+```bash
+python inference.py --prompt "She is wearing lipstick. She is attractive and has straight hair."
+```
+
+- Mask2Face
+
+```bash
+python inference.py --mask "data/mmcelebahq/mask/27000.png" \
+```
+
+-- (Text+Mask)2Face
 
 ```bash
 python inference.py \
     --prompt "She is wearing lipstick. She is attractive and has straight hair." \
     --mask "data/mmcelebahq/mask/27000.png" \
-    --output_dir output
 ```
 
-<!-- 这里放一个2x2的表格，第一行的内容是：Senmantic Mask, Generated Face，然后第二行的内容是mask的图片和生成的图片 !-->
+<!-- 1. 这里放一个4x3的表格，第一行是标题行，内容分别是：Text Prompt, Senmentic Mask, Generated Face，后三行的内容分别是上述3种推理方式的输入和输出 !-->
+<!-- 2. 推理的代码，prompt参数默认是空字符串，mask参数默认是空的mask，也就是全0的黑色mask !-->
+<!-- 3. 样例mask的图片你应该放到assets文件夹中，这样别人就不用下载mmcelebahq数据集也能推理 !-->
 
 ## 🌐 Gradio Demo (Web UI)
 
