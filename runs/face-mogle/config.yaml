@@ -31,6 +31,6 @@ train:
     type: Prodigy
   sample_interval: 100
   save_interval: 1000
-  save_path: runs/sota
+  save_path: runs/face-mogle
   wandb:
     project: face-mogle
