@@ -83,14 +83,14 @@ Face-MoGLE
 │   │   ├── text.json
 │   ├── mmffhqfemale
 │   │   ├── face
-│   │   │   ├── 0.jpg
-│   │   │   ├── 1.jpg
+│   │   │   ├── 00001.jpg
+│   │   │   ├── 00002.jpg
 │   │   ├── mask
-│   │   │   ├── 0.png
-│   │   │   ├── 1.png
+│   │   │   ├── 00001.png
+│   │   │   ├── 00002.png
 │   │   ├── text
-│   │   │   ├── 0.txt
-│   │   │   ├── 1.txt
+│   │   │   ├── 00001.txt
+│   │   │   ├── 00002.txt
 │   │   ├── text.json
 │   ├── mmfairfacehq
 │   │   ├── face
