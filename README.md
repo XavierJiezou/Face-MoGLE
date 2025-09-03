@@ -255,11 +255,45 @@ python inference.py \
 
 ## 🌐 Gradio Demo (Web UI)
 
-Launch the interactive demo app:
+You can also launch an interactive demo using **Gradio**:
 
 ```bash
 python gradio_app.py
+````
+
+---
+
+### 📂 Directory Setup
+
+Make sure the pretrained backbone and model weights are placed in the following structure before running the demo:
+
+```bash
+Face-MoGLE
+├── ...
+├── checkpoints
+│   ├── FLUX.1-dev
+├── runs
+│   ├── face-mogle
+│   │   ├── pytorch_lora_weights.safetensors
+│   │   ├── global_local_mask_moe.pt
+│   │   ├── config.yaml
 ```
+
+---
+
+### ⚡ GPU Control (Optional)
+
+If you want to specify which GPU to use, set the `CUDA_VISIBLE_DEVICES` environment variable before launching the demo.
+For example, to use **GPU 1**:
+
+```bash
+export CUDA_VISIBLE_DEVICES=1
+python gradio_app.py
+```
+
+
+
+
 
 ## Visual Results
 
