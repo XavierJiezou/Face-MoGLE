@@ -177,7 +177,6 @@ python src/eval/eval_fid_kid_text.py \
     --fake_image visulization/face-mogle/face \
     --real_face_dir visulization/mmcelebahq/face \
     --real_text_dir visulization/mmcelebahq/text \
-    --output_dir eval_result
 ```
 
 ### CMMD (CLIP Maximum Mean Discrepancy)  
@@ -196,7 +195,6 @@ cd src/eval/eval_cmmd & python eval_cmmd.py <gt_dir> <pred_dir>
 python src/eval/eval_mask.py \
     --real_dir visulization/mmcelebahq/face \
     --fake_img visulization/face-mogle/face \
-    --output_dir eval_result
 ```
 
 ### IR (ImageReward)  
@@ -207,7 +205,6 @@ python src/eval/eval_mask.py \
 python src/eval/eval_ir.py \
     --image_path visulization/face-mogle/face \
     --text_path visulization/mmcelebahq/text \
-    --output_dir eval_result
 ```
 
 ## 👀 Visualization
