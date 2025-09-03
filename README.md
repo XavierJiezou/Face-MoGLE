@@ -56,9 +56,9 @@ pip install -r requirements.txt
 
 You can download the datasets from Hugging Face:
 
-- [mmcelebahq.zip](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmcelebahq.zip)  
-- [mmfairfacehq.zip](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmfairfacehq.zip)  
-- [mmffhqfemale.zip](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmffhqfemale.zip)  
+- [MM-CelebA-HQ](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmcelebahq.zip) (The dataset is also available from the [TediGAN](https://github.com/IIGROUP/MM-CelebA-HQ-Dataset).)
+- [MM-FairFace-HQ](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmfairfacehq.zip)  
+- [MM-FFHQ-Female](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmffhqfemale.zip)  
 
 ---
 
