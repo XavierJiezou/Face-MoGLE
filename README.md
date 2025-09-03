@@ -169,6 +169,7 @@ Face-MoGLE is evaluated across multiple dimensions, including：
 ### FID / KID / Text Consistency
 
 > FID & KID: https://github.com/GaParmar/clean-fid
+
 > Text Consistency: https://github.com/Taited/clip-score
 
 ```bash
