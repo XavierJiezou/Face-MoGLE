@@ -164,7 +164,7 @@ python test.py \
 
 ## 📊 Evaluation
 
-Face-MoGLE is evaluated across multiple dimensions, including generation fidelity and condition consistency.
+Face-MoGLE is evaluated across multiple dimensions, including generation fidelity, condition consistency, and human perference.
 
 ### FID / KID / Text Consistency
 
