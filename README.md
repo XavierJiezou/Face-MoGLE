@@ -164,7 +164,10 @@ python test.py \
 
 ## 📊 Evaluation
 
-Face-MoGLE is evaluated across multiple dimensions, including generation quality (FID & KID), condition alignment (Text Consistency & Mask Consistency), and human preference (IR).
+Face-MoGLE is evaluated across multiple dimensions, including：
+- **Generation Quality**： FID & KID)
+- **Condition Alignment**: Text Consistency & Mask Consistency
+- **Human Preference**: IR
 
 ### FID / KID / Text Consistency
 
