@@ -132,6 +132,49 @@ python test.py \
 
 ```
 
+
+## 📥 Download Required Files
+
+Before testing, please download the following files:
+
+- Model weights:  
+  - [pytorch_lora_weights.safetensors](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/pytorch_lora_weights.safetensors)  
+  - [global_local_mask_moe.pt](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/global_local_mask_moe.pt)  
+
+- Pretrained backbone:  
+  - [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
+
+
+### 📂 Directory Organization
+
+After downloading, please organize your files as follows:
+
+```bash
+Face-MoGLE
+├── ...
+├── checkpoints
+│   ├── FLUX.1-dev
+├── runs
+│   ├── face-mogle
+│   │   ├── pytorch_lora_weights.safetensors
+│   │   ├── global_local_mask_moe.pt
+│   │   ├── config.yaml
+```
+
+### 🧪 Testing
+
+```
+python test.py \
+  --root data/mmcelebahq \
+  --lora_ckpt runs/face-mogle/pytorch_lora_weights.safetensors \
+  --moe_ckpt runs/face-mogle/global_local_mask_moe.pt \
+  --pretrained_ckpt checkpoints/FLUX.1-dev \
+  --config_path runs/face-mogle/config.yaml \
+  --output_dir visualization/face-mogle
+```
+
+
+
 ---
 
 ## 📊 Evaluation
