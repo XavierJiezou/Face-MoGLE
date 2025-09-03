@@ -135,7 +135,7 @@ python test.py \
 
 ## 🧪 Testing with Pretrained Weights
 
-### 📥 Download Required Files
+### 📥 Download Checkpoints
 
 Before running the test, please download the following files:
 
