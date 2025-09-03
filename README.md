@@ -15,7 +15,7 @@ Mixture of Global and Local Experts with Diffusion Transformer for Controllable 
 
 </div>
 
-## Installation
+## ⚙️ Installation
 
 ```bash
 conda create -n face-mogle python=3.11.11
@@ -23,9 +23,9 @@ conda activate face-mogle
 pip install -r requirements.txt
 ```
 
-## Pretrained Weights
+## 🏋️ Pretrained Weights
 
-### 📥 Download Checkpoints
+### Download Checkpoints
 
 Before running the inference or test, please download the following files:
 
@@ -36,7 +36,7 @@ Before running the inference or test, please download the following files:
   - [pytorch_lora_weights.safetensors](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/pytorch_lora_weights.safetensors)  
   - [global_local_mask_moe.pt](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/global_local_mask_moe.pt)  
 
-### 📂 Directory Setup
+### Directory Setup
 
 After downloading, please place the files in the following structure:
 
@@ -63,20 +63,15 @@ python inference.py \
     --output_dir output
 ```
 
-
 ## 🌐 Gradio Demo (Web UI)
-
-You can also launch an interactive demo using **Gradio**:
 
 ```bash
 python gradio_app.py
 ````
 
-🎥 Demo
-
 <video src="https://github.com/user-attachments/assets/fa2ba2e0-03d5-4d61-887c-53cdce0ccdf7" controls width="100%" playsinline preload="metadata"></video>
 
-### 📂 Directory Setup
+### Directory Setup
 
 Make sure the pretrained backbone and model weights are placed in the following structure before running the demo:
 
@@ -92,7 +87,7 @@ Face-MoGLE
 │   │   ├── config.yaml
 ```
 
-### ⚡ GPU Control (Optional)
+### GPU Control (Optional)
 
 If you want to specify which GPU to use, set the `CUDA_VISIBLE_DEVICES` environment variable before launching the demo.
 For example, to use **GPU 1**:
@@ -102,9 +97,7 @@ export CUDA_VISIBLE_DEVICES=1
 python gradio_app.py
 ```
 
-
-
-## Prepare Data
+## 📦 Prepare Data
 
 
 ### 📥 Download Datasets
@@ -162,11 +155,6 @@ Face-MoGLE
 │   │   │   ├── 55.txt
 ```
 
-
-
-
-<br>
-
 ## 🚀 Training
 
 ```bash
@@ -189,11 +177,11 @@ python test.py \
 
 Face-MoGLE is evaluated across multiple dimensions, including visual fidelity, semantic alignment, and structural consistency.
 
-### 🎯 FID / KID / Text Consistency  
+### FID / KID / Text Consistency  
 Measure generation quality and text-image alignment.
 
-- 📌 **[FID & KID](https://github.com/GaParmar/clean-fid)**
-- ✍️ **[Text Consistency](https://github.com/Taited/clip-score)**
+- *[FID & KID](https://github.com/GaParmar/clean-fid)**
+- **[Text Consistency](https://github.com/Taited/clip-score)**
 
 ```bash
 python src/eval/eval_fid_kid_text.py \
@@ -203,18 +191,18 @@ python src/eval/eval_fid_kid_text.py \
     --output_dir eval_result
 ```
 
-### 🧠 CLIP Maximum Mean Discrepancy (CMMD)  
+### CLIP Maximum Mean Discrepancy (CMMD)  
 
-- 🤖 **[CMMD](https://github.com/sayakpaul/cmmd-pytorch)**
+- **[CMMD](https://github.com/sayakpaul/cmmd-pytorch)**
 
 ```bash
 cd cmmd-pytorch
 python main.py gt_dir pred_dir
 ```
 
-### 🎭 Mask Consistency (DINO Structure Distance)  
+### Mask Consistency (DINO Structure Distance)  
 
-- 🧩 **[Mask Consistency](https://github.com/omerbt/Splice)**
+- **[Mask Consistency](https://github.com/omerbt/Splice)**
 
 ```bash
 python src/eval/eval_mask.py \
@@ -223,9 +211,9 @@ python src/eval/eval_mask.py \
     --output_dir eval_result
 ```
 
-### 👤 Human Perference (ImageReward)  
+### Human Perference (ImageReward)  
 
-- 🌟 **[ImageReward (IR)](https://github.com/THUDM/ImageReward)**
+- **[ImageReward (IR)](https://github.com/THUDM/ImageReward)**
 
 ```bash
 python src/eval/eval_ir.py \
@@ -234,8 +222,7 @@ python src/eval/eval_ir.py \
     --output_dir eval_result
 ```
 
-
-## Visualization
+## 👀 Visualization
 
 ### Monomodal Generation
 
@@ -272,7 +259,7 @@ python src/eval/eval_ir.py \
 
 - MM-FairFace-HQ
 
-## Citation
+## 📚 Citation
 
 ```bibtex
 @misc{zou2025mixturegloballocalexperts,
@@ -286,6 +273,6 @@ python src/eval/eval_ir.py \
 }
 ```
 
-## License
+## 📜 License
 
 This project is licensed under the Apache License 2.0 License. See the [LICENSE](LICENSE) file for details.
