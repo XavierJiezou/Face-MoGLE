@@ -181,7 +181,7 @@ python src/eval/eval_fid_kid_text.py \
 
 ### CLIP Maximum Mean Discrepancy (CMMD)  
 
-- **[CMMD](https://github.com/sayakpaul/cmmd-pytorch)**
+- CMMD: https://github.com/sayakpaul/cmmd-pytorch
 
 ```bash
 cd cmmd-pytorch
