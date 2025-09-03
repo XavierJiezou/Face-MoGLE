@@ -130,21 +130,24 @@ python test.py \
 ```
 
 
-## 📥 Download Required Files
+## 🧪 Testing with Pretrained Weights
 
-Before testing, please download the following files:
+### 📥 Download Required Files
 
-- Model weights:  
+Before running the test, please download the following files:
+
+- **Model weights:**  
   - [pytorch_lora_weights.safetensors](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/pytorch_lora_weights.safetensors)  
   - [global_local_mask_moe.pt](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/global_local_mask_moe.pt)  
 
-- Pretrained backbone:  
+- **Pretrained backbone:**  
   - [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
 
+---
 
-### 📂 Directory Organization
+### 📂 Directory Setup
 
-After downloading, please organize your files as follows:
+After downloading, please place the files in the following structure:
 
 ```bash
 Face-MoGLE
@@ -156,11 +159,15 @@ Face-MoGLE
 │   │   ├── pytorch_lora_weights.safetensors
 │   │   ├── global_local_mask_moe.pt
 │   │   ├── config.yaml
-```
+````
 
-### 🧪 Testing
+---
 
-```
+### ▶️ Run the Test
+
+Execute the following command:
+
+```bash
 python test.py \
   --root data/mmcelebahq \
   --lora_ckpt runs/face-mogle/pytorch_lora_weights.safetensors \
