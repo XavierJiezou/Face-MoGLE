@@ -49,6 +49,8 @@ conda activate face-mogle
 pip install -r requirements.txt
 ```
 
+## Pretrained Weights
+
 ### 📥 Download Checkpoints
 
 Before running the inference or test, please download the following files:
