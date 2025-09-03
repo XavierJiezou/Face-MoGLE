@@ -51,7 +51,22 @@ pip install -r requirements.txt
 
 ## Prepare Dataset
 
-```bash  
+
+### 📥 Download Datasets
+
+You can download the datasets from Hugging Face:
+
+- [mmcelebahq.zip](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmcelebahq.zip)  
+- [mmfairfacehq.zip](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmfairfacehq.zip)  
+- [mmffhqfemale.zip](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/resolve/main/mmffhqfemale.zip)  
+
+---
+
+### 📂 Dataset Structure
+
+After extraction, please organize the directory as follows:
+
+```bash
 Face-MoGLE
 ├── ...
 ├── data
@@ -77,7 +92,18 @@ Face-MoGLE
 │   │   │   ├── 0.txt
 │   │   │   ├── 1.txt
 │   │   ├── text.json
-```   
+│   ├── mmfairfacehq
+│   │   ├── face
+│   │   │   ├── 52.jpg
+│   │   │   ├── 55.jpg
+│   │   ├── mask
+│   │   │   ├── 52.png
+│   │   │   ├── 55.png
+│   │   ├── text
+│   │   │   ├── 52.txt
+│   │   │   ├── 55.txt
+
+
 
 <br>
 
