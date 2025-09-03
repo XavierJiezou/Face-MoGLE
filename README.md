@@ -54,7 +54,7 @@ Face-MoGLE
 
 ## 🖼️ Inference
 
-Generate images with semantic mask + text:
+- Text+:
 
 ```bash
 python inference.py \
@@ -62,6 +62,8 @@ python inference.py \
     --mask "data/mmcelebahq/mask/27000.png" \
     --output_dir output
 ```
+
+<!-- 这里放一个2x2的表格，第一行的内容是：Senmantic Mask, Generated Face，然后第二行的内容是mask的图片和生成的图片 !-->
 
 ## 🌐 Gradio Demo (Web UI)
 
