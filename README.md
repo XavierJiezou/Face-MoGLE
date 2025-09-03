@@ -110,14 +110,13 @@ Face-MoGLE
 
 <br>
 
-## 🚀 Training
+## 🚀 Training & Testing
 
 Train Face-MoGLE with default configuration:
 
 ```bash
 bash script/train_face-mogle.sh
 ```
-
 
 Run test script:
 
@@ -129,9 +128,7 @@ python test.py \
   --pretrained_ckpt checkpoints/FLUX.1-dev \
   --config_path runs/face-mogle/config.yaml \
   --output_dir visualization/face-mogle
-
 ```
-
 
 ## 🧪 Testing with Pretrained Weights
 
