@@ -179,7 +179,7 @@ python src/eval/eval_fid_kid_text.py \
     --output_dir eval_result
 ```
 
-### CLIP Maximum Mean Discrepancy (CMMD)  
+### CMMD (CLIP Maximum Mean Discrepancy)  
 
 - CMMD: https://github.com/sayakpaul/cmmd-pytorch
 
