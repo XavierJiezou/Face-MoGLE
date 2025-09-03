@@ -143,11 +143,6 @@ Before running the test, please download the following files:
 - **Pretrain**  
   - [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
  
-- **Config**  
-  - [config.yaml](https://huggingface.co/XavierJiezou/face-mogle-models/blob/main/config.yaml)
-
----
-
 ### 📂 Directory Setup
 
 After downloading, please place the files in the following structure:
@@ -164,8 +159,6 @@ Face-MoGLE
 │   │   ├── config.yaml
 ````
 
----
-
 ### ▶️ Run the Test
 
 Execute the following command:
@@ -180,15 +173,9 @@ python test.py \
   --output_dir visualization/face-mogle
 ```
 
-
-
----
-
 ## 📊 Evaluation
 
 Face-MoGLE is evaluated across multiple dimensions, including visual fidelity, semantic alignment, and structural consistency.
-
----
 
 ### 🎯 FID / KID / Text Consistency  
 Measure generation quality and text-image alignment.
@@ -204,8 +191,6 @@ python src/eval/eval_fid_kid_text.py \
     --output_dir eval_result
 ```
 
----
-
 ### 🧠 CLIP Maximum Mean Discrepancy (CMMD)  
 
 - 🤖 **[CMMD](https://github.com/sayakpaul/cmmd-pytorch)**
@@ -214,8 +199,6 @@ python src/eval/eval_fid_kid_text.py \
 cd cmmd-pytorch
 python main.py gt_dir pred_dir
 ```
-
----
 
 ### 🎭 Mask Consistency (DINO Structure Distance)  
 
@@ -228,8 +211,6 @@ python src/eval/eval_mask.py \
     --output_dir eval_result
 ```
 
----
-
 ### 👤 Human Perference (ImageReward)  
 
 - 🌟 **[ImageReward (IR)](https://github.com/THUDM/ImageReward)**
@@ -240,8 +221,6 @@ python src/eval/eval_ir.py \
     --text_path visulization/mmcelebahq/text \
     --output_dir eval_result
 ```
-
----
 
 ## 🖼️ Inference
 
@@ -254,8 +233,6 @@ python inference.py \
     --output_dir output
 ```
 
----
-
 ## 🌐 Gradio Demo (Web UI)
 
 You can also launch an interactive demo using **Gradio**:
@@ -266,11 +243,7 @@ python gradio_app.py
 
 🎥 Demo
 
-
 <video src="https://github.com/user-attachments/assets/fa2ba2e0-03d5-4d61-887c-53cdce0ccdf7" controls width="100%" playsinline preload="metadata"></video>
-
-
----
 
 ### 📂 Directory Setup
 
@@ -288,8 +261,6 @@ Face-MoGLE
 │   │   ├── config.yaml
 ```
 
----
-
 ### ⚡ GPU Control (Optional)
 
 If you want to specify which GPU to use, set the `CUDA_VISIBLE_DEVICES` environment variable before launching the demo.
@@ -299,10 +270,6 @@ For example, to use **GPU 1**:
 export CUDA_VISIBLE_DEVICES=1
 python gradio_app.py
 ```
-
-
-
-
 
 ## Visual Results
 
@@ -325,15 +292,11 @@ python gradio_app.py
   <img src="assets/multi_model.svg" width="100%"/>
 </p>
 
----
-
 ### 🔬 Ablation Study
 
 <p align="center">
   <img src="assets/ablation.svg" width="100%"/>
 </p>
-
----
 
 ### 🧪 Zero-Shot Generalization (MM-FFHQ-Female)
 
@@ -341,11 +304,7 @@ python gradio_app.py
   <img src="assets/zero_ffhq.svg" width="100%"/>
 </p>
 
-
-<!-- <br> -->
-
-<!-- ## Citation
-
+## Citation
 
 ```bibtex
 @article{Face-MoGLE,
@@ -354,11 +313,8 @@ python gradio_app.py
   journal   = {arXiv preprint arXiv:xxxx.xxxxx},
   year      = {2025}
 }
-``` -->
+```
 
----
+## License
 
-<!-- ## License
-
-This project is licensed under the Apache License 2.0 License. See the [LICENSE](LICENSE) file for details. -->
-
+This project is licensed under the Apache License 2.0 License. See the [LICENSE](LICENSE) file for details.
