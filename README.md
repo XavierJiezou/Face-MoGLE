@@ -15,32 +15,6 @@ Mixture of Global and Local Experts with Diffusion Transformer for Controllable 
 
 </div>
 
-<!--This repository serves as the official implementation of the paper **"Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation"**. It provides a comprehensive pipeline for semantic segmentation, including data preprocessing, model training, evaluation, and deployment, specifically tailored for cloud segmentation tasks in remote sensing imagery.-->
-
----
-
-<!-- ## Features
-
-**Face-MoGLE** is a novel and flexible framework for high-quality, controllable face generation, built on top of Diffusion Transformer (DiT) models.
-
-* **Global-Local Expert Mixture 🧠**: Incorporates a Mixture of Experts (MoE) with both global and local experts to simultaneously capture holistic facial structure and fine-grained regional details.
-
-* **Decoupled Semantic Control 🎛️**: Semantic masks are disentangled from the diffusion process, enabling fine-grained control over facial attributes without sacrificing image quality.
-
-* **Dynamic Expert Routing 🔄**: A spatially-aware gating network dynamically adjusts expert contributions during the diffusion process, allowing adaptive semantic alignment and visual fidelity.
-
-* **Photorealism with Robustness 📸**: Generated faces are highly photorealistic and can fool state-of-the-art face forgery detectors, making the method valuable for both creative and security-related applications.
-
-* **Multimodal & Zero-Shot Generalization 🌈**: Works effectively under both multimodal and monomodal conditions with strong zero-shot generalization across diverse face generation tasks.
-
----
-
-## News
-
-- **2025-04-11**: 🧪 Inference and demo scripts released! Try Face-MoGLE with your own semantic masks and test its control capability across different face attributes. 
-
-<img src='assets/framework.svg' width='100%' /> -->
-
 ## Installation
 
 ```bash
