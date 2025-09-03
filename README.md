@@ -168,7 +168,8 @@ Face-MoGLE is evaluated across multiple dimensions, including：
 
 ### FID / KID / Text Consistency
 
-> [FID & KID]: https://github.com/GaParmar/clean-fid
+>[FID & KID]: https://github.com/GaParmar/clean-fid
+
 > [Text Consistency]: https://github.com/Taited/clip-score
 
 ```bash
@@ -181,7 +182,7 @@ python src/eval/eval_fid_kid_text.py \
 
 ### CMMD (CLIP Maximum Mean Discrepancy)  
 
-- CMMD: https://github.com/sayakpaul/cmmd-pytorch
+> CMMD: https://github.com/sayakpaul/cmmd-pytorch
 
 ```bash
 cd src/eval/eval_cmmd & python eval_cmmd.py <gt_dir> <pred_dir>
