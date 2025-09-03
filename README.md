@@ -261,6 +261,12 @@ You can also launch an interactive demo using **Gradio**:
 python gradio_app.py
 ````
 
+🎥 Demo
+
+
+<video src="https://github.com/user-attachments/assets/fa2ba2e0-03d5-4d61-887c-53cdce0ccdf7" controls width="100%" playsinline preload="metadata"></video>
+
+
 ---
 
 ### 📂 Directory Setup
