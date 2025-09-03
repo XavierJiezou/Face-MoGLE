@@ -278,9 +278,9 @@ python src/eval/eval_ir.py \
 ```
 
 
-## Visual Results
+## Visualization
 
-### 🔹 Monomodal Generation
+### Monomodal Generation
 
 <table>
   <tr>
@@ -293,23 +293,27 @@ python src/eval/eval_ir.py \
   </tr>
 </table>
 
-### 🔸 Multimodal Generation
+### Multimodal Generation
 
 <p align="center">
   <img src="assets/multi_model.svg" width="100%"/>
 </p>
 
-### 🔬 Ablation Study
+### Ablation Study
 
 <p align="center">
   <img src="assets/ablation.svg" width="100%"/>
 </p>
 
-### 🧪 Zero-Shot Generalization (MM-FFHQ-Female)
+### Zero-Shot Generalization
+
+- MM-FFHQ-Female
 
 <p align="center">
   <img src="assets/zero_ffhq.svg" width="100%"/>
 </p>
+
+- MM-FairFace-HQ
 
 ## Citation
 
