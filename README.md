@@ -184,8 +184,7 @@ python src/eval/eval_fid_kid_text.py \
 - CMMD: https://github.com/sayakpaul/cmmd-pytorch
 
 ```bash
-cd cmmd-pytorch
-python main.py <gt_dir> <pred_dir>
+cd src/eval/eval_cmmd & python eval_cmmd.py <gt_dir> <pred_dir>
 ```
 
 ### Mask Consistency (DINO Structure Distance)  
