@@ -164,7 +164,7 @@ python test.py \
 
 ## 📊 Evaluation
 
-Face-MoGLE is evaluated across multiple dimensions, including generation fidelity, condition consistency, and human perference.
+Face-MoGLE is evaluated across multiple dimensions, including generation quality (FID & KID), condition alignment (Text Consistency & Mask Consistency), and human preference (IR).
 
 ### FID / KID / Text Consistency
 
@@ -199,9 +199,9 @@ python src/eval/eval_mask.py \
     --output_dir eval_result
 ```
 
-### Human Perference (ImageReward)  
+### IR (ImageReward)  
 
-> ImageReward (IR): https://github.com/THUDM/ImageReward
+> IR: https://github.com/THUDM/ImageReward
 
 ```bash
 python src/eval/eval_ir.py \
