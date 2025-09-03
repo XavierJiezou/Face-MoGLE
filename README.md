@@ -144,6 +144,9 @@ Before running the test, please download the following files:
 
 - **Pretrain**  
   - [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
+ 
+- **Config**  
+  - [config.yaml](https://huggingface.co/XavierJiezou/face-mogle-models/blob/main/config.yaml)
 
 ---
 
