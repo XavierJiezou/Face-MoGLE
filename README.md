@@ -254,6 +254,12 @@ python src/eval/eval_ir.py \
 
 - MM-FairFace-HQ
 
+
+<p align="center">
+  <img src="assets/zero_fairface.svg" width="100%"/>
+</p>
+
+
 ## 📚 Citation
 
 ```bibtex
