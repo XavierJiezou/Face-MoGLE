@@ -1,17 +1,21 @@
 <!doctype html>
-<html>
+<html lang="zh-CN">
 
 <head>
-	<title>Face-MoGLE</title>
+	<title>Face-MoGLE - Mixture of Global and Local Experts for Controllable Face Generation</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Face-MoGLE: A novel framework for controllable face generation using Diffusion Transformers with mixture of global and local experts.">
+	<meta name="keywords" content="Face Generation, Diffusion Transformer, Controllable Generation, AI, Machine Learning">
+	<meta name="author" content="Xuechao Zou, Shun Zhang, Xing Fu, Yue Li, Kai Li, Yushe Cao, Congyan Lang, Pin Tao, Junliang Xing">
 	<link rel="shortcut icon" type="image/png" href="resources/face.png">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="style.css" rel="stylesheet" type="text/css">
-	<meta property="og:image" content="resources/teaser.png" />
+	<meta property="og:image" content="resources/images/teaser.svg" />
 	<meta property="og:title" content="Face-MoGLE" />
-	<meta property="og:description" content="a webpage template for academic projects" />
+	<meta property="og:description" content="Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://kit.fontawesome.com/ad96f96272.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -27,1073 +31,265 @@
 
 		#myCarousel .carousel-indicators {
 			position: static;
-			/* 取消绝对定位，让元素按照文档流排列 */
 			margin-top: 20px;
-			/* 根据需要调整上边距，将指示器推到图片下方 */
 			bottom: auto;
-			/* 去除底部偏移 */
 		}
 	</style>
-
 </head>
 
 
 
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-	</script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-	<!-- navigation bar on the top, nav bar stick to the top -->
-	<!-- <nav id="navbar_top" class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 15px;">
-		<div class="container">
-			<a class="navbar-brand" href="">Face-MoGLE</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
-				<span class="navbar-toggler-icon"></span>
-			</button> -->
-			<!-- <div class="collapse navbar-collapse" id="main_nav">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link" href="#images">Images</a></li>
-					<li class="nav-item"><a class="nav-link" href="#paper">Paper</a></li>
-				</ul>
-			</div> -->
-		<!-- </div>
-	</nav> -->
-	<!-- end nav bar -->
-
-	<div class="container-xl">
+	<div class="container-xl" id="top">
 		<!-- top button -->
-		<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+		<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top" aria-label="Back to top">
 			<i class="fas fa-arrow-up"></i>
 		</button>
 		<!-- end top button -->
 
 		<!-- top - author names, affiliation and links -->
-		<center>
-			<br>
-			<br>
+		<section class="text-center">
+			<br><br>
 			<img src="resources/face.png" alt="Face-MoGLE Logo" style="max-height: 175px; margin-bottom: 15px;">
-			<h1>Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation</h1>
-		    <br>
-			<h4>Under Review in 2025 IEEE Transactions on Pattern Analysis and Machine Intelligence</h4>
+			<h1 class="display-4">Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation</h1>
+			<br>
+			<section id="authors" style="max-width:1200px; margin:auto;">
+				<p class="author-names h5" style="line-height:1.4; margin-bottom:10px;">
+					<span>Xuechao Zou<sup>1*</sup></span>,
+					<span>Shun Zhang<sup>1*</sup></span>,
+					<span>Xing Fu<sup>2</sup></span>,
+					<span>Yue Li<sup>3</sup></span>,
+					<span>Kai Li<sup>4</sup></span>,
+					<span>Yushe Cao<sup>4</sup></span>,
+					<span>Congyan Lang<sup>1†</sup></span>,
+					<span>Pin Tao<sup>4</sup></span>,
+					<span>Junliang Xing<sup>4†</sup></span>
+				</p>
+				<p class="affiliations" style="font-size:16px; line-height:1.4; margin-bottom:4px;">
+					<sup>1</sup> Beijing Jiaotong University &nbsp;|&nbsp;
+					<sup>2</sup> Ant Group &nbsp;|&nbsp;
+					<sup>3</sup> Qinghai University &nbsp;|&nbsp;
+					<sup>4</sup> Tsinghua University
+				</p>
+				<p style="font-size:14px; margin-bottom: 20px;">
+					<sup>*</sup> Equal contribution.&nbsp; <sup>†</sup> Corresponding authors.
+				</p>
+			</section>
+
 			<div class="container">
-				<div class="row justify-content-md-center">
-					<div class="col-md-auto">
-						<span style="font-size:24px">Anonymous Author(s)</span>
+				<div class="row justify-content-center g-2">
+					<!-- arXiv -->
+					<div class="col-auto">
+						<a class="btn btn-outline-primary btn-lg" href="https://arxiv.org/abs/2509.00428" role="button" aria-label="arXiv Paper">
+							<i class="ai ai-arxiv"></i> arXiv
+						</a>
 					</div>
-					<!-- <div class="col-md-auto">
-						<span style="font-size:24px"><a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener noreferrer">Author 2</a></span>
+					<!-- Paper -->
+					<div class="col-auto">
+						<a class="btn btn-outline-primary btn-lg" href="https://arxiv.org/pdf/2411.13127" role="button" aria-label="PDF Paper">
+							<i class="fas fa-file-pdf"></i> Paper
+						</a>
 					</div>
-					<div class="col-md-auto">
-						<span style="font-size:24px"><a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener noreferrer">Author 3</a></span>
+					<!-- Code -->
+					<div class="col-auto">
+						<a class="btn btn-outline-primary btn-lg" href="https://github.com/XavierJiezou/Face-MoGLE" role="button" aria-label="GitHub Code">
+							<i class="fab fa-github"></i> Code
+						</a>
 					</div>
-					<div class="col-md-auto">
-						<span style="font-size:24px"><a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener noreferrer">Author 4</a></span>
-					</div> -->
+					<!-- HF Models -->
+					<div class="col-auto">
+						<a class="btn btn-outline-warning btn-lg" href="https://huggingface.co/XavierJiezou/face-mogle-models" role="button" aria-label="Hugging Face Models">
+							🤗 Models
+						</a>
+					</div>
+					<!-- HF Datasets -->
+					<div class="col-auto">
+						<a class="btn btn-outline-warning btn-lg" href="https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets" role="button" aria-label="Hugging Face Datasets">
+							🤗 Datasets
+						</a>
+					</div>
 				</div>
 			</div>
-
-			<p class="text-center affilation" style="font-size: 20pt;">Affiliation<p>
-					<div class="container">
-						<div class="row justify-content-md-center">
-							<div class="col-md-auto">
-								<span><a class="btn btn-outline-primary" href='resources/main.pdf?v=202504122050' role="button"
-										style="font-size: 24px;"><i class="fas fa-file-pdf"></i> Paper</a></span>
-							</div>
-							<div class="col-md-auto">
-								<span><a class="btn btn-outline-primary" href='resources/supp.pdf' role="button"
-										style="font-size: 24px;"><i class="fas fa-file-pdf"></i>
-										Supplementary</a></span>
-							</div>
-							<div class="col-md-auto">
-								<span><a class="btn btn-outline-primary" href='https://anonymous.4open.science/r/Face-MoGLE-2780' role="button"
-										style="font-size: 24px;"><i class="fab fa-github"></i> Anonymous Code
-									</a></span>
-							</div>
-						</div>
-					</div>
-		</center>
+		</section>
 		<!-- end top -->
 
 		<br>
 
 		<!-- abstract and teaser image-->
-		<center>
+		<section class="text-center">
 			<div class="container" style="margin-top: 20px;">
-				<!-- <div class="row justify-content-md-center">
-					<p style="font-size:18px;"><strong>Teaser Image</strong></p>
-				</div> -->
-				<div class="row justify-content-md-center">
-					<img alt="" id="teaser" src="./resources/images/teaser.svg" style="width: 1300px;" />
+				<div class="row justify-content-center">
+					<img alt="Teaser image of Face-MoGLE framework" id="teaser" src="./resources/images/teaser.svg" style="width: 100%; max-width: 1300px;" class="img-fluid" />
 				</div>
 			</div>
-			<h1 style="margin-top: 10px;">Abstract</h1>
-		</center>
-		<p>
-			Controllable face generation poses critical challenges in generative modeling due to the intricate balance required between semantic controllability and photorealism. While existing approaches struggle with disentangling semantic controls from generation pipelines, we revisit the architectural potential of Diffusion Transformers (DiTs) through the lens of expert specialization. This paper introduces Face-MoGLE, a novel framework featuring: (1) Semantic-decoupled latent modeling through mask-conditioned space factorization, enabling precise attribute manipulation; (2) A mixture of global and local experts that captures holistic structure and region-level semantics for fine-grained controllability; (3) A dynamic gating network producing time-dependent coefficients that evolve with diffusion steps and spatial locations. Face-MoGLE provides a powerful and flexible solution for high-quality, controllable face generation, with strong potential in generative modeling and security applications. Extensive experiments demonstrate its effectiveness in multimodal and monomodal face generation settings and its robust zero-shot generalization capability.
+			<h1 class="mt-3">Abstract</h1>
+		</section>
+		<p class="lead">
+			Controllable face generation poses critical challenges in generative modeling due to the intricate balance
+			required between semantic controllability and photorealism. While existing approaches struggle with
+			disentangling semantic controls from generation pipelines, we revisit the architectural potential of
+			Diffusion Transformers (DiTs) through the lens of expert specialization. This paper introduces Face-MoGLE, a
+			novel framework featuring: (1) Semantic-decoupled latent modeling through mask-conditioned space
+			factorization, enabling precise attribute manipulation; (2) A mixture of global and local experts that
+			captures holistic structure and region-level semantics for fine-grained controllability; (3) A dynamic
+			gating network producing time-dependent coefficients that evolve with diffusion steps and spatial locations.
+			Face-MoGLE provides a powerful and flexible solution for high-quality, controllable face generation, with
+			strong potential in generative modeling and security applications. Extensive experiments demonstrate its
+			effectiveness in multimodal and monomodal face generation settings and its robust zero-shot generalization
+			capability.
 		</p>
 		<!-- end abstract and teaser image-->
 
-		<!-- video of a talk about your paper (youtube embedding) -->
-
 		<!-- Images -->
 		<hr id="images">
-		<center>
+		<section class="text-center">
 			<h1 style="margin-top: 65px;">Method</h1>
-		</center>
+		</section>
 
 		<!-- static images -->
-		<center>
-			<img alt="" src="./resources/images/mogle.svg" style="width: 1000px;" />
-
-		</center>
-		<p style="margin-top: 35px;">
-			The Face-MoGLE framework extracts region-specific features from a semantic mask using a shared-weight VAE encoder, routing them to global and local experts. Their outputs are fused through a dynamic gating network, enabling high-fidelity generation with fine semantic alignment.
+		<div class="text-center">
+			<img alt="Face-MoGLE framework overview" src="./resources/images/mogle.svg" style="width: 100%; max-width: 1000px;" class="img-fluid" />
+		</div>
+		<p style="margin-top: 35px;" class="text-center">
+			The Face-MoGLE framework extracts region-specific features from a semantic mask using a shared-weight VAE
+			encoder, routing them to global and local experts. Their outputs are fused through a dynamic gating network,
+			enabling high-fidelity generation with fine semantic alignment.
 		</p>
 		<!-- end static images -->
 
-		<!-- images with drop down menu -->
-		<!-- <div class="container">
-			<p  style="margin-top: 35px;">
-			Or can be chosen from a dropdown menu, for some easy comparison between different methods for example 
-			</p>
-		</div> -->
-		<!-- dropdown -->
-		<!-- <center>
 		<div class="container">
-			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-3">
-				<div class="col">
-					<img alt="" id="dropdown1" class="round" src="./resources/dropdown/dropdown1/1.png" width="100%" style="padding-right: 2%; max-width:250px;"/>
-					<div class="btn-group my-btn" id="myDropdown">
-						<button type="button" onclick="document.getElementById('dropdown1').src='./resources/dropdown/dropdown1/1.png'" class="btn btn-info">Dropdown</button>
-						<button type="button" class="btn my-btn-info btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-							<span class="visually-hidden">Toggle Dropdown</span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown1').src='./resources/dropdown/dropdown1/2.png'">2</a></li>
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown1').src='./resources/dropdown/dropdown1/3.png'">3</a></li>
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown1').src='./resources/dropdown/dropdown1/4.png'">4</a></li>
-							<li><hr class="dropdown-divider"></li> 
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown1').src='./resources/dropdown/dropdown1/1.png'">1</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col">
-					<img alt="" id="dropdown2" class="round" src="./resources/dropdown/dropdown2/1.png" width="100%" style="padding-right: 2%; max-width:250px;"/>
-					<div class="btn-group my-btn" id="myDropdown">
-						<button type="button" onclick="document.getElementById('dropdown2').src='./resources/dropdown/dropdown2/1.png'" class="btn btn-info">Dropdown</button>
-						<button type="button" class="btn my-btn-info btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-							<span class="visually-hidden">Toggle Dropdown</span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown2').src='./resources/dropdown/dropdown2/2.png'">2</a></li>
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown2').src='./resources/dropdown/dropdown2/3.png'">3</a></li>
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown2').src='./resources/dropdown/dropdown2/4.png'">4</a></li>
-							<li><hr class="dropdown-divider"></li> 
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown2').src='./resources/dropdown/dropdown2/1.png'">1</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col">
-					<img alt="" id="dropdown3" class="round" src="./resources/dropdown/dropdown3/1.png" width="100%" style="padding-right: 2%; max-width:250px;"/>
-					<div class="btn-group my-btn" id="myDropdown">
-						<button type="button" onclick="document.getElementById('dropdown3').src='./resources/dropdown/dropdown3/1.png'" class="btn btn-info">Dropdown</button>
-						<button type="button" class="btn my-btn-info btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-							<span class="visually-hidden">Toggle Dropdown</span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown3').src='./resources/dropdown/dropdown3/2.png'">2</a></li>
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown3').src='./resources/dropdown/dropdown3/3.png'">3</a></li>
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown3').src='./resources/dropdown/dropdown3/4.png'">4</a></li>
-							<li><hr class="dropdown-divider"></li> 
-							<li><a class="dropdown-item" onclick="document.getElementById('dropdown3').src='./resources/dropdown/dropdown3/1.png'">1</a></li>
-						</ul>
-					</div>
-				</div>
-		</div>
-		</center> -->
-		<!-- end images with dropdown menu -->
-
-		<!-- image carousel -->
-		<!-- <div class="container">
-			<p  style="margin-top: 35px;">
-			Using image carousel, images can be fading into each other automatically, or can be switched using arrows 
-			</p>
-		</div> -->
-		<div class="container">
-			<div class="row justify-content-md-center">
-				<!-- automatically fade -->
-				<!-- <div class="col-sm" style="max-width: 550px;">
-					<center>
-						<div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-							<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img class="d-block" width="100%" src="./resources/carousel/1.jpg" style="max-width: 400px;">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block" width="100%" src="./resources/carousel/2.jpg" style="max-width: 400px;">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block" width="100%" src="./resources/carousel/3.jpg" style="max-width: 400px;">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block" width="100%" src="./resources/carousel/4.jpg" style="max-width: 400px;">
-							</div>
-							</div>
-						</div>
-					</center>
-				</div> -->
-				<!-- end automatically fade -->
-				<!-- arrows carousel -->
-				<!-- Todo -->
-				<!-- <div class="col-sm" style="max-width: 1000px;">
-					<center>
-						<div id="myCarousel" class="carousel" data-ride="carousel" data-interval="false">
-							<ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel" data-slide-to="1"></li>
-							<li data-target="#myCarousel" data-slide-to="2"></li>
-							</ol>
-							<div class="carousel-inner">
-							
-							<div class="carousel-item active" >
-								<img class="d-block" src="./resources/images/multi_model.png" style="width: 100%;height: auto;object-fit: contain;">
-								<div class="carousel-caption d-none d-md-block">
-								  </div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block" src="./resources/images/mask2face.png" style="width: 100%;height: auto;object-fit: contain;">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block" src="./resources/images/text2face.png" style="width: 100%;height: auto;object-fit: contain;">
-							</div>
-
-							</div>
-							<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-								<i class="fa-solid fa-circle-left fa-2xl left-arrow"></i>
-							<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-								<i class="fa-solid fa-circle-right fa-2xl right-arrow"></i>
-							<span class="sr-only">Next</span>
-							</a>
-						</div>
-					</center>
-				</div> -->
-				<div class="col-sm" style="max-width: 1000px;">
-					<center>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="text-center">
 						<!-- 标题放在轮播外部 -->
-						<h3 id="carousel-title" style="font-weight: bolder;">Multimodal Face Generation</h3>
+						<h3 id="carousel-title" class="fw-bold">Multimodal Face Generation</h3>
 						<!-- <p id="carousel-description">第一个图片的描述</p> -->
 
-						<div id="myCarousel" class="carousel" data-ride="carousel" data-interval="false">
-							
+						<div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block" src="./resources/images/multi_modal.svg"
-										style="width: auto;height: 400px;">
+									<img class="d-block w-100" src="./resources/images/multi_modal.svg" alt="Multimodal Face Generation" style="height: 400px; object-fit: contain;">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block" src="./resources/images/text2face.svg"
-										style="width: auto;height: 400px;">
+									<img class="d-block w-100" src="./resources/images/text2face.svg" alt="Text-to-Face Generation" style="height: 400px; object-fit: contain;">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block" src="./resources/images/mask2face.svg"
-										style="width: auto;height: 400px;">
+									<img class="d-block w-100" src="./resources/images/mask2face.svg" alt="Mask-to-Face Generation" style="height: 400px; object-fit: contain;">
 								</div>
 							</div>
 							<ol class="carousel-indicators">
-								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-								<li data-target="#myCarousel" data-slide-to="1"></li>
-								<li data-target="#myCarousel" data-slide-to="2"></li>
+								<li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+								<li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+								<li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
 							</ol>
-							<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-								<i class="fa-solid fa-circle-left fa-2xl left-arrow"></i>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-								<i class="fa-solid fa-circle-right fa-2xl right-arrow"></i>
-								<span class="sr-only">Next</span>
-							</a>
+							<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+								<i class="fa-solid fa-circle-left fa-2xl left-arrow" aria-hidden="true"></i>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+								<i class="fa-solid fa-circle-right fa-2xl right-arrow" aria-hidden="true"></i>
+								<span class="visually-hidden">Next</span>
+							</button>
 						</div>
-					</center>
+					</div>
 				</div>
-				<!-- end arrows carousel -->
 			</div>
 		</div>
-		<!-- end image carousel -->
+		<!-- end arrows carousel -->
 		<!-- image slider -->
 
 		<div class="container">
-			<div class="row justify-content-md-center">
-				<!-- first option for image slider -->
-				<!-- end first option for image slider -->
-				<!-- second option for image slider -->
-				<div class="col-sm" style="max-width: 1000px;margin-top: 10px;">
-					<center>
-						<h3 style="font-weight: bolder;">Zero-Shot Generalization on the MM-FFHQ-Female Dataset</h3>
+			<div class="row justify-content-center">
+				<div class="col-lg-10 mt-3">
+					<div class="text-center">
+						<h3 class="fw-bold">Zero-Shot Generalization on the MM-FFHQ-Female Dataset</h3>
 						<div class="range-slider">
-
-							<img src="./resources/images/zero_ffhq.svg"
-								style="width: 100%;height: auto;object-fit: contain;">
+							<img src="./resources/images/zero_ffhq.svg" alt="Zero-Shot Generalization Results" style="width: 100%; height: auto; object-fit: contain;" class="img-fluid">
 						</div>
-					</center>
+					</div>
 				</div>
-				<!-- end second option for image slider -->
 			</div>
 		</div>
 
-		<div class="container" style="margin-bottom: 70px;margin-top: 20px;">
-			<div class="row justify-content-md-center">
-				<div class="col-sm" style="max-width: 1000px;">
-					<center>
-						<h3 style="font-weight: bolder;">Ablation Studies</h3>
-						<img src="./resources/images/ablation.svg"
-							style="width: 100%;height: auto;object-fit: contain;">
-					</center>
-				</div>
-
-			</div>
-		</div>
-
-
-		<!-- table begin -->
-		<!-- <center>
-			<h3 style="margin-top: 60px; font-weight: bolder;">Comparison of Face Generation Methods on MM-CelebA-HQ
-			</h3>
-			<p><em>Evaluation across different tasks. Lower is better (↓), higher is better (↑).</em></p>
-		</center> -->
-
-		<!-- Buttons to choose between methods -->
-		<!-- <div class="btn-group d-flex justify-content-center" style="margin-bottom: 20px;">
-			<button type="button" class="btn btn-primary active" id="multimodal-btn">Multimodal</button>
-			<button type="button" class="btn btn-primary" id="text2face-btn">Text2Face</button>
-			<button type="button" class="btn btn-primary" id="mask2face-btn">Mask2Face</button>
-		</div>
-
-		<div class="table-responsive" style="margin-top: 20px;">
-			<table class="table table-bordered table-hover align-middle text-center" id="methodTable">
-				<thead class="table-primary align-middle">
-					<tr>
-						<th rowspan="2">Method</th>
-						<th rowspan="2">Venue</th>
-						<th rowspan="2">Paradigm</th>
-						<th colspan="3">Image Generation Quality</th>
-						<th colspan="2">Condition Alignment</th>
-						<th rowspan="2">IR ↑</th>
-					</tr>
-					<tr>
-						<th>FID ↓</th>
-						<th>KID ↓</th>
-						<th>CMMD ↓</th>
-						<th>Mask ↓</th>
-						<th>Text ↑</th>
-					</tr>
-				</thead>
-				<tbody id="tableContent"> -->
-					<!-- Multimodal Face Generation -->
-					<!-- <tr class="table-secondary text-center fw-bold multimodal">
-						<td colspan="9">Multimodal Face Generation</td>
-					</tr>
-					<tr class="multimodal">
-						<td>TediGAN</td>
-						<td>CVPR-21</td>
-						<td>GAN</td>
-						<td>83.35</td>
-						<td>74.75</td>
-						<td>1.562</td>
-						<td><u>2.46</u></td>
-						<td>23.90</td>
-						<td>-0.1446</td>
-					</tr>
-					<tr class="multimodal">
-						<td>UaC</td>
-						<td>CVPR-23</td>
-						<td>Diffusion</td>
-						<td>75.35</td>
-						<td>63.78</td>
-						<td>1.982</td>
-						<td>3.41</td>
-						<td>25.52</td>
-						<td>-0.4001</td>
-					</tr>
-					<tr class="multimodal">
-						<td>Collaborative</td>
-						<td>CVPR-23</td>
-						<td>Diffusion</td>
-						<td><u>24.48</u></td>
-						<td><u>13.50</u></td>
-						<td><u>0.734</u></td>
-						<td>3.22</td>
-						<td>24.51</td>
-						<td>-0.1265</td>
-					</tr>
-					<tr class="multimodal">
-						<td>PixelFace+</td>
-						<td>ACM MM-23</td>
-						<td>GAN</td>
-						<td>65.53</td>
-						<td>53.90</td>
-						<td>1.273</td>
-						<td>2.61</td>
-						<td><u>26.16</u></td>
-						<td><u>0.6403</u></td>
-					</tr>
-					<tr class="multimodal">
-						<td>DDGI</td>
-						<td>CVPR-24</td>
-						<td>GAN & Diffusion</td>
-						<td>46.68</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-					</tr>
-					<tr style="background-color: #f0f0f0;" class="multimodal">
-						<td><strong>Face-MoGLE (Ours)</strong></td>
-						<td>-</td>
-						<td>Diffusion</td>
-						<td><strong>22.24</strong></td>
-						<td><strong>10.87</strong></td>
-						<td><strong>0.477</strong></td>
-						<td><strong>2.44</strong></td>
-						<td><strong>26.32</strong></td>
-						<td><strong>0.7014</strong></td>
-					</tr> -->
-
-					<!-- Mask-to-Face Generation -->
-					<!-- <tr class="table-secondary text-center fw-bold mask2face" style="display:none;">
-						<td colspan="9">Mask-to-Face Generation</td>
-					</tr>
-					<tr class="mask2face" style="display:none;">
-						<td>INADE</td>
-						<td>CVPR-21</td>
-						<td>GAN</td>
-						<td><u>21.09</u></td>
-						<td><u>11.24</u></td>
-						<td>1.871</td>
-						<td>2.57</td>
-						<td><u>24.85</u></td>
-						<td>-0.0234</td>
-					</tr>
-					<tr class="mask2face" style="display:none;">
-						<td>E2Style</td>
-						<td>TIP-22</td>
-						<td>GAN</td>
-						<td>38.44</td>
-						<td>21.22</td>
-						<td><u>1.129</u></td>
-						<td><u>2.36</u></td>
-						<td>24.75</td>
-						<td><u>0.1649</u></td>
-					</tr>
-					<tr class="mask2face" style="display:none;">
-						<td>SemFlow</td>
-						<td>NeurIPS-24</td>
-						<td>Flow</td>
-						<td>56.65</td>
-						<td>41.48</td>
-						<td>1.767</td>
-						<td><strong>2.30</strong></td>
-						<td><strong>25.65</strong></td>
-						<td>-0.004</td>
-					</tr>
-					<tr class="mask2face" style="display:none;">
-						<td><strong>Face-MoGLE (Ours)</strong></td>
-						<td>-</td>
-						<td>Diffusion</td>
-						<td><strong>19.63</strong></td>
-						<td><strong>8.29</strong></td>
-						<td><strong>0.399</strong></td>
-						<td>2.57</td>
-						<td>24.53</td>
-						<td><strong>0.0398</strong></td>
-					</tr> -->
-
-					<!-- Text-to-Face Generation -->
-					<!-- <tr class="table-secondary text-center fw-bold text2face" style="display:none;">
-						<td colspan="9">Text-to-Face Generation</td>
-					</tr>
-					<tr class="text2face" style="display:none;">
-						<td>clip2latent</td>
-						<td>BMVC-22</td>
-						<td>GAN</td>
-						<td><u>63.89</u></td>
-						<td><u>38.55</u></td>
-						<td><u>1.410</u></td>
-						<td>5.05</td>
-						<td><u>27.56</u></td>
-						<td><strong>1.0129</strong></td>
-					</tr>
-					<tr class="text2face" style="display:none;">
-						<td>GCDP</td>
-						<td>ICCV-23</td>
-						<td>Diffusion</td>
-						<td>72.67</td>
-						<td>43.81</td>
-						<td>1.456</td>
-						<td><u>4.68</u></td>
-						<td>25.94</td>
-						<td>0.4563</td>
-					</tr>
-					<tr class="text2face" style="display:none;">
-						<td>E3-FaceNet</td>
-						<td>ICML-24</td>
-						<td>GAN</td>
-						<td>70.89</td>
-						<td>47.82</td>
-						<td>2.749</td>
-						<td><strong>4.64</strong></td>
-						<td><strong>27.94</strong></td>
-						<td>0.8150</td>
-					</tr>
-					<tr class="text2face" style="display:none;">
-						<td><strong>Face-MoGLE (Ours)</strong></td>
-						<td>-</td>
-						<td>Diffusion</td>
-						<td><strong>34.81</strong></td>
-						<td><strong>21.85</strong></td>
-						<td><strong>0.636</strong></td>
-						<td>4.94</td>
-						<td>26.91</td>
-						<td><u>0.9527</u></td>
-					</tr>
-				</tbody>
-			</table>
-		</div> -->
-
-		<script>
-			document.getElementById("multimodal-btn").addEventListener("click", function () {
-				toggleMethod("multimodal");
-			});
-
-			document.getElementById("text2face-btn").addEventListener("click", function () {
-				toggleMethod("text2face");
-			});
-
-			document.getElementById("mask2face-btn").addEventListener("click", function () {
-				toggleMethod("mask2face");
-			});
-
-			function toggleMethod(method) {
-				const allRows = document.querySelectorAll(".multimodal, .text2face, .mask2face");
-				allRows.forEach(row => {
-					row.style.display = "none";
-				});
-
-				const activeRows = document.querySelectorAll(`.${method}`);
-				activeRows.forEach(row => {
-					row.style.display = "";
-				});
-
-				// Toggle active class for buttons
-				document.querySelectorAll(".btn-group .btn").forEach(btn => {
-					btn.classList.remove("active");
-				});
-				document.getElementById(`${method}-btn`).classList.add("active");
-			}
-
-			// Set initial display
-			toggleMethod("multimodal");
-		</script>
-
-
-		<!-- <center>
-			<h3 style="margin-top: 60px;font-weight: bolder;">Zero-Shot Multimodal Face Generation on MM-FFHQ-Female
-			</h3>
-			<p><em>Comparison under zero-shot setting. ↓ = lower is better, ↑ = higher is better.</em></p>
-		</center>
-
-		<div class="table-responsive" style="margin-top: 20px;">
-			<table class="table table-bordered table-hover align-middle text-center">
-				<thead class="table-primary align-middle">
-					<tr>
-						<th rowspan="2">Method</th>
-						<th rowspan="2">Venue</th>
-						<th rowspan="2">Paradigm</th>
-						<th colspan="3">Image Generation Quality</th>
-						<th colspan="2">Condition Alignment</th>
-						<th rowspan="2">IR ↑</th>
-					</tr>
-					<tr>
-						<th>FID ↓</th>
-						<th>KID ↓</th>
-						<th>CMMD ↓</th>
-						<th>Mask ↓</th>
-						<th>Text ↑</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>TediGAN</td>
-						<td>CVPR-21</td>
-						<td>GAN</td>
-						<td>122.47</td>
-						<td>92.72</td>
-						<td><strong>1.091</strong></td>
-						<td>3.32</td>
-						<td>25.03</td>
-						<td>-0.4847</td>
-					</tr>
-					<tr>
-						<td>UaC</td>
-						<td>CVPR-23</td>
-						<td>Diffusion</td>
-						<td>86.58</td>
-						<td>46.57</td>
-						<td>1.796</td>
-						<td>3.11</td>
-						<td><u>26.97</u></td>
-						<td>-0.8851</td>
-					</tr>
-					<tr>
-						<td>Collaborative</td>
-						<td>CVPR-23</td>
-						<td>Diffusion</td>
-						<td>93.31</td>
-						<td>62.84</td>
-						<td>2.178</td>
-						<td>3.85</td>
-						<td>23.03</td>
-						<td>-1.2101</td>
-					</tr>
-					<tr>
-						<td>PixelFace+</td>
-						<td>ACM MM-23</td>
-						<td>GAN</td>
-						<td><u>76.45</u></td>
-						<td><u>38.95</u></td>
-						<td>1.917</td>
-						<td><u>3.08</u></td>
-						<td>26.60</td>
-						<td><u>-0.2616</u></td>
-					</tr>
-					<tr style="background-color: #f0f0f0;">
-						<td><strong>Face-MoGLE (Ours)</strong></td>
-						<td>-</td>
-						<td>Diffusion</td>
-						<td><strong>62.93</strong></td>
-						<td><strong>31.27</strong></td>
-						<td><u>1.238</u></td>
-						<td><strong>2.77</strong></td>
-						<td><strong>28.06</strong></td>
-						<td><strong>0.1801</strong></td>
-					</tr>
-				</tbody>
-			</table>
-		</div> -->
-
-		<!-- <center>
-			<h3 style="margin-top: 60px; font-weight: bolder;">Deepfake Detection Performance Comparison</h3>
-			<p><em>Each metric is shown for two detectors: <strong>NPR</strong> and <strong>Wavelet-CLIP</strong>.</em>
-			</p>
-		</center> -->
-
-		<!-- Tabs -->
-		<!-- <ul class="nav nav-tabs justify-content-center" id="detectorTab" role="tablist">
-			<li class="nav-item" role="presentation">
-				<button class="nav-link active" id="npr-tab" data-bs-toggle="tab" data-bs-target="#npr" type="button"
-					role="tab" aria-controls="npr" aria-selected="true">NPR</button>
-			</li>
-			<li class="nav-item" role="presentation">
-				<button class="nav-link" id="wavelet-tab" data-bs-toggle="tab" data-bs-target="#wavelet" type="button"
-					role="tab" aria-controls="wavelet" aria-selected="false">Wavelet-CLIP</button>
-			</li>
-		</ul> -->
-
-		<!-- Tab Content -->
-		<!-- <div class="tab-content" id="detectorTabContent" style="margin-top: 20px;"> -->
-			<!-- NPR -->
-			<!-- <div class="tab-pane fade show active" id="npr" role="tabpanel" aria-labelledby="npr-tab">
-				<div class="table-responsive">
-					<table class="table table-bordered table-hover text-center align-middle">
-						<thead class="table-info">
-							<tr>
-								<th>Method</th>
-								<th>AUC ↑</th>
-								<th>EER ↓</th>
-								<th>AP ↑</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>TediGan</td>
-								<td>0.73</td>
-								<td>0.35</td>
-								<td>0.71</td>
-							</tr>
-							<tr>
-								<td>UaC</td>
-								<td>0.45</td>
-								<td>0.53</td>
-								<td>0.43</td>
-							</tr>
-							<tr>
-								<td>Collaborative</td>
-								<td><u>0.51</u></td>
-								<td><u>0.51</u></td>
-								<td><u>0.50</u></td>
-							</tr>
-							<tr>
-								<td>PixelFace+</td>
-								<td>0.28</td>
-								<td>0.65</td>
-								<td><strong>0.37</strong></td>
-							</tr>
-							<tr style="background-color: #f0f0f0;">
-								<td><strong>Face-MoGLE (Ours)</strong></td>
-								<td><strong>0.50</strong></td>
-								<td><strong>0.50</strong></td>
-								<td>0.52</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div> -->
-
-			<!-- Wavelet -->
-			<!-- <div class="tab-pane fade" id="wavelet" role="tabpanel" aria-labelledby="wavelet-tab">
-				<div class="table-responsive">
-					<table class="table table-bordered table-hover text-center align-middle">
-						<thead class="table-success">
-							<tr>
-								<th>Method</th>
-								<th>AUC ↑</th>
-								<th>EER ↓</th>
-								<th>AP ↑</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>TediGan</td>
-								<td>0.81</td>
-								<td>0.26</td>
-								<td><u>0.76</u></td>
-							</tr>
-							<tr>
-								<td>UaC</td>
-								<td>0.96</td>
-								<td><strong>0.11</strong></td>
-								<td>0.96</td>
-							</tr>
-							<tr>
-								<td>Collaborative</td>
-								<td><u>0.75</u></td>
-								<td><u>0.32</u></td>
-								<td>0.79</td>
-							</tr>
-							<tr>
-								<td>PixelFace+</td>
-								<td>0.87</td>
-								<td>0.20</td>
-								<td>0.89</td>
-							</tr>
-							<tr style="background-color: #f0f0f0;">
-								<td><strong>Face-MoGLE (Ours)</strong></td>
-								<td><strong>0.46</strong></td>
-								<td><strong>0.53</strong></td>
-								<td><strong>0.46</strong></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div> -->
-
-
-		<!-- table end -->
-<!-- 
-		<center>
-			<h3 style="margin-top: 60px;">Deepfake Detection Comparison Radar</h3>
-			<p><em>Hover over data points to see <strong>Method</strong>, <strong>Detector</strong>,
-					<strong>Metric</strong>, and <strong>Value</strong>.</em></p>
-		</center>
-
-		<div style="max-width: 800px; margin: auto;">
-			<canvas id="deepfakeRadarChart"></canvas>
-		</div> -->
-
-
-		<!-- end image overlay -->
-
-		<!-- end Images -->
-
-		<!-- Audio -->
-
-		<!-- end Audio -->
-
-		<!-- Video -->
-
-		<!-- end Video -->
-
-		<!-- Paper -->
-		<!-- <hr id="paper">
-		<div class="container">
-			<center>
-				<h1 style="margin-top: 65px;">Paper</h1>
-			</center>
-			<div class="row justify-content-md-center">
-				<div class="col-md-auto" style="padding: 1px;">
-					<a href='resources/paper.pdf' target="_blank" rel="noopener noreferrer">
-						<img alt="" class="layered-paper-big" style="height:100%; max-height: 175px;"
-							src="./resources/paper.png" />
-					</a>
-					<a href='resources/paper.pdf' target="_blank" rel="noopener noreferrer">
-						<img alt="" class="layered-paper" style="height:100%; max-height: 175px;"
-							src="./resources/paper.png" />
-					</a>
-					<a href='resources/paper.pdf' target="_blank" rel="noopener noreferrer">
-						<img alt="" class="paper-big" style="height:100%; max-height: 175px;"
-							src="./resources/paper.png" />
-					</a>
-				</div>
-				<div class="col-md-auto" style="padding: 1px;">
-					<p style="font-size:14pt; margin-top: 5px;"><strong>Paper Name</strong><br>
-						Anonymous Author<br>
-						<span><a class="btn btn-outline-primary" href='https://arxiv.org' role="button"
-								style="font-size: 16px;"><i class="ai ai-arxiv"></i> Arxiv</a></span>
-						<span><a class="btn btn-outline-primary" href='resources/paper.pdf' role="button"
-								style="font-size: 16px;"><i class="fas fa-file-pdf"></i> Paper</a></span>
-					</p>
+		<div class="container mb-5 mt-3">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="text-center">
+						<h3 class="fw-bold">Ablation Studies</h3>
+						<img src="./resources/images/ablation.svg" alt="Ablation Studies Results" style="width: 100%; height: auto; object-fit: contain;" class="img-fluid">
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<!-- bibtex citation -->
-		<!-- <p class="section" id="bibtex"><b>Bibtex</b></p>
-		<table border="0">
-			<tbody>
-				<pre
-					class="command-copy"><div class="container"><div class="row"><div class="col" id="citation">
-@inproceedings{
-	authorXXXXpaper,
-	title={Your Catchy yet Informational Title},
-	author={Author 1, Author 2, Author 3 and Author 4},
-	booktitle={Some International Conference},
-	year={XXXX},
-	url={https://openreview.net/}
-} -->
-		<!-- </div><div class="col text-end"><button type="button" class="btn btn-light" onclick="copyBib()" onmouseover="console.log('hover');"><i class="fa-regular fa-copy"></i></button></div></div></div></pre>
-			</tbody>
-		</table> -->
+		<section id="paper" class="mt-5">
+			<h2 class="text-center mb-4">BibTeX Citation</h2>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="position-relative">
+							<pre class="bg-light p-3 rounded" id="citation">@misc{zou2025mixturegloballocalexperts,
+	title={Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation},
+	author={Xuechao Zou and Shun Zhang and Xing Fu and Yue Li and Kai Li and Yushe Cao and Congyan Lang and Pin Tao and Junliang Xing},
+	year={2025},
+	eprint={2509.00428},
+	archivePrefix={arXiv},
+	primaryClass={cs.CV},
+	url={https://arxiv.org/abs/2509.00428}
+}</pre>
+							<button type="button" class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2" onclick="copyBib()" aria-label="Copy BibTeX">
+								<i class="fa-regular fa-copy"></i> Copy
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 		<!-- end bibtex citation -->
 
-		<!-- <div class="container">
-			<p class="text-left">
-				More results, comparison to other methods and further discussion about our model can be found in the <a
-					href="resources/supp.pdf" target="_blank" rel="noopener noreferrer">supplementary material</a>.<br>
-				Our official code implementation can be found in the official <a href="https://github.com"
-					target="_blank" rel="noopener noreferrer">github repository</a>.
-			</p>
-		</div>
-
-
-		<center>
-			<table class="table" width="1" style="max-width: 400px;">
-				<tbody>
-					<tr>
-						<td width="50%" style="text-align: center;">
-							<a target="_blank" rel="noopener noreferrer" href="resources/supp.pdf"
-								style="color:black !important;">
-								<img alt="" id="supp" class="round" width="100%" style="max-width:150px"
-									border="1px solid" src="./resources/supp.png" />
-							</a>
-						</td>
-						<td width="50%" style="text-align: center;">
-							<a href="https://github.com" target="_blank" rel="noopener noreferrer">
-								<img alt="" id="github_logo" class="round" width="100%" style="max-width:150px"
-									src="./resources/github_logo.png" />
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td style="font-size:14pt; text-align: center;" <span><a class="btn btn-outline-primary"
-								href='resources/supp.pdf' role="button"
-								style="font-size: 16px;">Supplementary</a></span>
-						</td>
-						<td style="font-size:14pt; text-align: center;">
-							<span><a class="btn btn-outline-primary" href='https://github.com' role="button"
-									style="font-size: 16px;">Code</a></span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</center>
-
-		<hr>
-		<br> -->
-
 		<!-- acknowledgement -->
-		<!-- <div class="container">
-			<center>
-				<h3>Acknowledgements</h3>
-			</center>
-			<p style="font-size: 11pt;">
-				<center>
-					This webpage was originally made by <a href="https://www.linkedin.com/in/matan-kleiner/"
-						target="_blank" rel="noopener noreferrer">Matan Kleiner</a> with the
-					help of <a target="_blank" rel="noopener noreferrer"
-						href="https://www.linkedin.com/in/hilamanor/">Hila Manor</a>. The code for the original template
-					can be found <a target="_blank" rel="noopener noreferrer"
-						href="https://github.com/matankleiner/academic-webpage-template/tree/main">here</a>.<br>
-					Icons are taken from <a target="_blank" rel="noopener noreferrer"
-						href="https://fontawesome.com/">font awesome</a> or from <a target="_blank"
-						rel="noopener noreferrer" href="https://jpswalsh.github.io/academicons/">Academicons</a>.
-				</center>
-			</p>
-		</div>
-		<br> -->
+		<section class="mt-5">
+			<div class="container">
+				<div class="text-center">
+					<h3>Acknowledgements</h3>
+				</div>
+				<p class="text-center small">
+					This webpage was originally made by <a href="https://www.linkedin.com/in/matan-kleiner/" target="_blank" rel="noopener noreferrer">Matan Kleiner</a> with the
+					help of <a href="https://www.linkedin.com/in/hilamanor/" target="_blank" rel="noopener noreferrer">Hila Manor</a>. The code for the original template
+					can be found <a href="https://github.com/matankleiner/academic-webpage-template/tree/main" target="_blank" rel="noopener noreferrer">here</a>.<br>
+					Icons are taken from <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">Font Awesome</a> or from <a href="https://jpswalsh.github.io/academicons/" target="_blank" rel="noopener noreferrer">Academicons</a>.
+				</p>
+			</div>
+		</section>
+		<br>
 
 	</div>
 
 	<script src="functionality.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-	</script>
 	<script>
 		$(document).ready(function () {
 			// 定义标题和描述
-			const titles = ["Multimodal Face Generation",
-				"Text-to-Face Generation",
-				"Mask-to-Face Generation"
-			];
-			// const descriptions = ["第一个图片的描述", "第二个图片的描述", "第三个图片的描述"];
+			const titles = ["Multimodal Face Generation", "Text-to-Face Generation", "Mask-to-Face Generation"];
 
 			// 当轮播切换时更新标题
 			$('#myCarousel').on('slid.bs.carousel', function () {
 				const activeIndex = $('.carousel-item.active').index();
 				$('#carousel-title').text(titles[activeIndex]);
-				// $('#carousel-description').text(descriptions[activeIndex]);
 			});
 		});
 
-		const ctx = document.getElementById('deepfakeRadarChart');
-
-		new Chart(ctx, {
-			type: 'radar',
-			data: {
-				labels: ['AUC', 'EER', 'AP'],
-				datasets: [{
-						label: 'TediGan - NPR',
-						data: [0.73, 0.35, 0.71],
-						backgroundColor: 'rgba(255,99,132,0.2)',
-						borderColor: 'rgba(255,99,132,1)',
-						pointHoverRadius: 6
-					},
-					{
-						label: 'TediGan - Wavelet-CLIP',
-						data: [0.81, 0.26, 0.76],
-						backgroundColor: 'rgba(255,99,132,0.1)',
-						borderColor: 'rgba(255,99,132,0.5)',
-						borderDash: [5, 5]
-					},
-					{
-						label: 'UaC - NPR',
-						data: [0.45, 0.53, 0.43],
-						backgroundColor: 'rgba(54,162,235,0.2)',
-						borderColor: 'rgba(54,162,235,1)'
-					},
-					{
-						label: 'UaC - Wavelet-CLIP',
-						data: [0.96, 0.11, 0.96],
-						backgroundColor: 'rgba(54,162,235,0.1)',
-						borderColor: 'rgba(54,162,235,0.5)',
-						borderDash: [5, 5]
-					},
-					{
-						label: 'Collaborative - NPR',
-						data: [0.51, 0.51, 0.50],
-						backgroundColor: 'rgba(255,206,86,0.2)',
-						borderColor: 'rgba(255,206,86,1)'
-					},
-					{
-						label: 'Collaborative - Wavelet-CLIP',
-						data: [0.75, 0.32, 0.79],
-						backgroundColor: 'rgba(255,206,86,0.1)',
-						borderColor: 'rgba(255,206,86,0.5)',
-						borderDash: [5, 5]
-					},
-					{
-						label: 'PixelFace+ - NPR',
-						data: [0.28, 0.65, 0.37],
-						backgroundColor: 'rgba(153,102,255,0.2)',
-						borderColor: 'rgba(153,102,255,1)'
-					},
-					{
-						label: 'PixelFace+ - Wavelet-CLIP',
-						data: [0.87, 0.20, 0.89],
-						backgroundColor: 'rgba(153,102,255,0.1)',
-						borderColor: 'rgba(153,102,255,0.5)',
-						borderDash: [5, 5]
-					},
-					{
-						label: 'Face-MoGLE - NPR',
-						data: [0.50, 0.50, 0.52],
-						backgroundColor: 'rgba(75,192,192,0.2)',
-						borderColor: 'rgba(75,192,192,1)'
-					},
-					{
-						label: 'Face-MoGLE - Wavelet-CLIP',
-						data: [0.46, 0.53, 0.46],
-						backgroundColor: 'rgba(75,192,192,0.1)',
-						borderColor: 'rgba(75,192,192,0.5)',
-						borderDash: [5, 5]
-					}
-				]
-			},
-			options: {
-				responsive: true,
-				elements: {
-					line: {
-						borderWidth: 2
-					}
-				},
-				plugins: {
-					tooltip: {
-						callbacks: {
-							label: function (context) {
-								const methodDetector = context.dataset.label;
-								const metric = context.label;
-								const value = context.formattedValue;
-								return `${methodDetector} - ${metric}: ${value}`;
-							}
-						}
-					},
-					legend: {
-						position: 'top',
-						labels: {
-							boxWidth: 12
-						}
-					},
-					title: {
-						display: false
-					}
-				},
-				scales: {
-					r: {
-						min: 0,
-						max: 1,
-						ticks: {
-							stepSize: 0.2
-						},
-						pointLabels: {
-							font: {
-								size: 14
-							}
-						}
-					}
-				}
-			}
-		});
+		// 复制 BibTeX 函数
+		function copyBib() {
+			const citationText = document.getElementById("citation").textContent;
+			navigator.clipboard.writeText(citationText).then(() => {
+				alert("BibTeX copied to clipboard!");
+			}).catch(err => {
+				console.error('Failed to copy: ', err);
+			});
+		}
 	</script>
 </body>
 

@@ -4,15 +4,22 @@
 
 
 body {
-    font-family: Google Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-weight:300;
-    font-size:18px;
-    margin:0px;
-    padding:0px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: normal;
 }
 
 p {
     font-size: 14pt;
+    font-family: "Times New Roman", Times, serif;
 }
 
 
@@ -20,6 +27,7 @@ a:link,a:visited
 {
     color: #1367a7;
     text-decoration: none;
+    font-family: "Times New Roman", Times, serif;
 }
 a:hover {
     color: #208799;
@@ -29,6 +37,7 @@ td.dl-link {
     height: 160px;
     text-align: center;
     font-size: 22px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 hr {
@@ -88,6 +97,7 @@ pre {
     padding: 1rem 1rem 1rem 5rem;
     border-radius: 20px !important;
     min-width: 100px;
+    font-family: "Times New Roman", Times, serif;
   }
 
 span.command-copy {
@@ -145,6 +155,7 @@ td {
 .btn-light:hover { 
   background: #eee !important;
   border-color: #ccc !important;
+  font-family: "Times New Roman", Times, serif;
 }
 
 

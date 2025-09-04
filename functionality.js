@@ -112,6 +112,6 @@ document.body.addEventListener('touchcancel',function(){
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ copy button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function copyBib() {
-  let copyText = $("#citation")[0];
-  navigator.clipboard.writeText(copyText.getHTML());
+  let copyText = $("#citation")[0].textContent;
+  navigator.clipboard.writeText(copyText);
 }
