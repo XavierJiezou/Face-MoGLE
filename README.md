@@ -60,7 +60,7 @@ python inference.py --prompt "She is wearing lipstick. She is attractive and has
 - Mask2Face
 
 ```bash
-python inference.py --mask "assets/readme_demo/27000.png" \
+python inference.py --mask "assets/readme_demo/27000.png"
 ```
 
 - (Text+Mask)2Face
@@ -68,12 +68,12 @@ python inference.py --mask "assets/readme_demo/27000.png" \
 ```bash
 python inference.py \
     --prompt "She is wearing lipstick. She is attractive and has straight hair." \
-    --mask "assets/readme_demo/27000.png" \
+    --mask "assets/readme_demo/27000.png"
 ```
 
 
 | Text Prompt                                                         | Senmentic Mask                          | Generated Face                                       |
-| ------------------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------- |
+| :-----------------------------------------------------------------: | :-------------------------------------: | :--------------------------------------------------: |
 | “She is wearing lipstick. She is attractive and has straight hair.” | —                                       | ![Text2Face Output](assets/readme_demo/text2face.png)            |
 | —                                                                   | ![Mask](assets/readme_demo/27000.png) | ![Mask2Face Output](assets/readme_demo/mask2face.png)            |
 | “She is wearing lipstick. She is attractive and has straight hair.” | ![Mask](assets/readme_demo/27000.png) | ![(Text+Mask)2Face Output](assets/readme_demo/Text+Mask.png) |
