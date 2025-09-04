@@ -186,7 +186,7 @@ Face-MoGLE is evaluated across multiple dimensions, including：
 python src/eval/eval_fid_kid_text.py \
     --fake_image visulization/face-mogle/face \
     --real_face_dir visulization/mmcelebahq/face \
-    --real_text_dir visulization/mmcelebahq/text \
+    --real_text_dir visulization/mmcelebahq/text
 ```
 
 ### CMMD (CLIP Maximum Mean Discrepancy)  
@@ -204,7 +204,7 @@ cd src/eval/eval_cmmd & python eval_cmmd.py <gt_dir> <pred_dir>
 ```bash
 python src/eval/eval_mask.py \
     --real_dir visulization/mmcelebahq/face \
-    --fake_img visulization/face-mogle/face \
+    --fake_img visulization/face-mogle/face
 ```
 
 ### IR (ImageReward)  
@@ -214,7 +214,7 @@ python src/eval/eval_mask.py \
 ```bash
 python src/eval/eval_ir.py \
     --image_path visulization/face-mogle/face \
-    --text_path visulization/mmcelebahq/text \
+    --text_path visulization/mmcelebahq/text
 ```
 
 ## 👀 Visualization
