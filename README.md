@@ -32,9 +32,9 @@ pip install -r requirements.txt
 
 Before running the inference, test and gradio demo, please download the following files:
 
-- **Pretrain**: [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev)
+- **Pretrain**: [FLUX.1-dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) (DiT-based)
 
-- **SFT**: [pytorch_lora_weights.safetensors](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/pytorch_lora_weights.safetensors) & [global_local_mask_moe.pt](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/global_local_mask_moe.pt)  
+- **SFT**: [pytorch_lora_weights.safetensors](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/pytorch_lora_weights.safetensors) (LoRA) & [global_local_mask_moe.pt](https://huggingface.co/XavierJiezou/face-mogle-models/resolve/main/global_local_mask_moe.pt) (MoGLE)  
 
 ### Directory Setup
 
