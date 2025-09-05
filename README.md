@@ -171,6 +171,8 @@ Face-MoGLE is evaluated across multiple dimensions, including：
 - **Condition Alignment**: Text Consistency & Mask Consistency
 - **Human Preference**: IR
 
+---
+
 ### FID / KID / Text Consistency
 
 > FID & KID: https://github.com/GaParmar/clean-fid
