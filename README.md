@@ -258,7 +258,7 @@ python src/eval/eval_ir.py \
 ## 📚 Citation
 
 ```bibtex
-@misc{zou2025mixturegloballocalexperts,
+@misc{face-mogle,
       title={Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation}, 
       author={Xuechao Zou and Shun Zhang and Xing Fu and Yue Li and Kai Li and Yushe Cao and Congyan Lang and Pin Tao and Junliang Xing},
       year={2025},
