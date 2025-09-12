@@ -216,6 +216,8 @@ python src/eval/eval_ir.py \
 
 ## 👀 Visualization
 
+> More visualization results are available at [Hugging Face](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets/tree/main/visualization), which can be used for comparison in your paper. Please kindly cite our work if you find it useful.
+
 ### Monomodal Generation
 
 <table>
