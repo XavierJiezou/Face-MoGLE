@@ -2,7 +2,7 @@
 
 <img src="assets/logo.png" width="200"/>
 
-# Face-MoGLE
+# [TPAMI 2026] Face-MoGLE
 
 Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation
 
