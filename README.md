@@ -6,6 +6,8 @@
 
 Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation
 
+[![IEEE Xplore](https://img.shields.io/badge/IEEE%20Xplore-11592693-00629B.svg)](https://ieeexplore.ieee.org/abstract/document/11592693/)
+[![DOI](https://img.shields.io/badge/DOI-10.1109/TPAMI.2026.3708691-brightgreen)](https://doi.org/10.1109/TPAMI.2026.3708691)
 [![arXiv Paper](https://img.shields.io/badge/arXiv-2509.00428-B31B1B)](https://arxiv.org/abs/2509.00428)
 [![Project Page](https://img.shields.io/badge/Project%20Page-Face--MoGLE-blue)](https://xavierjiezou.github.io/Face-MoGLE/)
 <br>
