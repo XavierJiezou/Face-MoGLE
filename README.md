@@ -273,7 +273,8 @@ python src/eval/eval_ir.py \
   number={},
   pages={1-17},
   keywords={Faces;Modeling;Noise reduction;Educational institutions;Computers;Diffusion models;Training;Transformers;Technology;Generative adversarial networks;Mixture of Experts;Diffusion Transformer;Controllable Face Generation;Multimodal Conditioning},
-  doi={10.1109/TPAMI.2026.3708691}}
+  doi={10.1109/TPAMI.2026.3708691}
+}
 ```
 
 ## 📜 License
