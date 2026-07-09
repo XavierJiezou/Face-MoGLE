@@ -264,15 +264,16 @@ python src/eval/eval_ir.py \
 ## 📚 Citation
 
 ```bibtex
-@misc{face-mogle,
-      title={Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation}, 
-      author={Xuechao Zou and Shun Zhang and Xing Fu and Yue Li and Kai Li and Yushe Cao and Congyan Lang and Pin Tao and Junliang Xing},
-      year={2025},
-      eprint={2509.00428},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2509.00428}, 
-}
+@ARTICLE{face-mogle,
+  author={Zou, Xuechao and Zhang, Shun and Fu, Xing and Li, Yue and Li, Kai and Cao, Yushe and Lang, Congyan and Tao, Pin and Xing, Junliang},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Mixture of Global and Local Experts with Diffusion Transformer for Controllable Face Generation}, 
+  year={2026},
+  volume={},
+  number={},
+  pages={1-17},
+  keywords={Faces;Modeling;Noise reduction;Educational institutions;Computers;Diffusion models;Training;Transformers;Technology;Generative adversarial networks;Mixture of Experts;Diffusion Transformer;Controllable Face Generation;Multimodal Conditioning},
+  doi={10.1109/TPAMI.2026.3708691}}
 ```
 
 ## 📜 License
