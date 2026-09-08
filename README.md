@@ -14,7 +14,7 @@ Mixture of Global and Local Experts with Diffusion Transformer for Controllable 
 [![HugginngFace Models](https://img.shields.io/badge/🤗HugginngFace-Models-orange)](https://huggingface.co/XavierJiezou/face-mogle-models)
 [![HugginngFace Datasets](https://img.shields.io/badge/🤗HugginngFace-Datasets-orange)](https://huggingface.co/datasets/XavierJiezou/face-mogle-datasets)
 [![Daily Papers](https://img.shields.io/badge/🤗HuggingFace-Paper-orange)](https://huggingface.co/papers/2509.00428)
-[![HugginngFace Spaces](https://img.shields.io/badge/🤗HugginngFace-Spaces-orange)](https://huggingface.co/spaces/XavierJiezou/face-mogle)
+<!--[![HugginngFace Spaces](https://img.shields.io/badge/🤗HugginngFace-Spaces-orange)](https://huggingface.co/spaces/XavierJiezou/face-mogle)-->
 
 ![teaser](assets/framework.svg)
 
